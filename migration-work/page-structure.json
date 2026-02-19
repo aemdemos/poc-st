@@ -1,0 +1,203 @@
+{
+  "url": "https://jobs.army.mod.uk",
+  "pageType": "homepage",
+  "totalSections": 8,
+  "contentSections": 7,
+  "sections": [
+    {
+      "id": "section-1-hero",
+      "selector": ".Home_hero__0PjU_",
+      "type": "hero-with-split-cta",
+      "stylingNotes": "Full-width hero image with grunge texture overlay, large H1 title, then a two-column CTA area below with orange accent buttons",
+      "contentSequences": [
+        {
+          "type": "image",
+          "element": "picture > img",
+          "src": "https://a.storyblok.com/f/88791/1800x1350/edaa982681/hp-hero-ths_001_07_03_002.png/m/1920x760/filters:focal(844x558:845x559)/",
+          "alt": "A skier in red and white gear navigates a slalom course on a snowy slope"
+        },
+        {
+          "type": "heading",
+          "tag": "h1",
+          "text": "You Belong Here"
+        },
+        {
+          "type": "two-column-cta",
+          "selector": ".Home_heroActions__S7X92",
+          "left": {
+            "heading": "A job like no other",
+            "text": "The Army offers you challenge and adventure that you simply can't find in any other job.",
+            "cta": {"text": "Regular Army", "href": "/regular-army/"}
+          },
+          "right": {
+            "heading": "Make a difference",
+            "text": "Join the Army without leaving your day job — and get the best of both worlds.",
+            "cta": {"text": "Army Reserve", "href": "/army-reserve/"}
+          }
+        }
+      ]
+    },
+    {
+      "id": "section-2-campaign-banner",
+      "selector": ".Home_campaignBanner__hPAws",
+      "type": "campaign-banner",
+      "stylingNotes": "Full-width background image with dark overlay, video play button, H2 heading, description paragraph, and CTA link",
+      "contentSequences": [
+        {
+          "type": "image",
+          "element": "picture > img",
+          "src": "https://a.storyblok.com/f/88791/1920x1080/22ad434d41/ybh-stretcher-still2.png/m/1920x760/smart",
+          "alt": "Soldier looking directly at you"
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "text": "DO YOU HAVE THE INSTINCTS?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Army is evacuating civilians during a conflict. Would you do nothing, or help? What does your gut say, do you belong here?"
+        },
+        {
+          "type": "cta",
+          "text": "What's your gut saying?",
+          "href": "/youbelonghere/"
+        }
+      ]
+    },
+    {
+      "id": "section-3-find-your-fit",
+      "selector": ".Home_featureOneBanner__nPTY7",
+      "type": "feature-promo",
+      "stylingNotes": "Full-width section with grunge texture overlay, decorative orange diagonal lines on left, text content on right with orange CTA button",
+      "contentSequences": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "text": "FIND YOUR FIT"
+        },
+        {
+          "type": "paragraph",
+          "text": "Are you not quite sure what the best way to join is? Use our Find Your Fit tool and discover where you could fit best."
+        },
+        {
+          "type": "cta",
+          "text": "Find your fit",
+          "href": "/how-to-join/find-your-fit/"
+        }
+      ]
+    },
+    {
+      "id": "section-4-recruitment-cta",
+      "selector": ".Home_recruitment__gxPG6",
+      "type": "simple-cta",
+      "stylingNotes": "Orange background section with centered heading and CTA button, simple layout",
+      "contentSequences": [
+        {
+          "type": "heading",
+          "tag": "h3",
+          "text": "Be the Best"
+        },
+        {
+          "type": "cta",
+          "text": "How to join",
+          "href": "/how-to-join/"
+        }
+      ]
+    },
+    {
+      "id": "section-5-carousel-cards",
+      "selector": ".CarouselCards_carouselCards__F5Ozh",
+      "type": "card-carousel",
+      "stylingNotes": "Dark background (#3f3f3f), horizontal card carousel with 4 portrait cards. First card is 'featured' (larger title, no number). Other cards have large semi-transparent overlay numbers (01, 02, 03). Cards have rounded bottom corners, dark card backgrounds (#15171a). Prev/next arrow navigation and dot indicators.",
+      "contentSequences": [
+        {
+          "type": "card",
+          "variant": "featured",
+          "image": "https://a.storyblok.com/f/88791/2085x3127/ba49be1968/thoughtful-soldier-mob.jpg/m/400x670/smart",
+          "title": "5 Reasons to Join the Army"
+        },
+        {
+          "type": "card",
+          "number": "01",
+          "image": "https://a.storyblok.com/f/88791/1000x1500/d991ed2465/exciting-mob.jpg/m/400x670/smart",
+          "title": "It's exciting",
+          "description": "You'll work with cutting-edge equipment, and every day will bring a new challenge."
+        },
+        {
+          "type": "card",
+          "number": "02",
+          "image": "https://a.storyblok.com/f/88791/1800x1350/2c1d7181e0/army-home-carousel-2.jpg/m/400x670/smart",
+          "title": "Great opportunities",
+          "description": "Where else would you get paid for travel and adventure?"
+        },
+        {
+          "type": "card",
+          "number": "03",
+          "image": "https://a.storyblok.com/f/88791/1504x1001/a23e3cdf78/guard_carousel-new.jpg/m/400x670/smart",
+          "title": "Serve your country",
+          "description": "Play a key role in protecting the United Kingdom's interests at home and abroad."
+        }
+      ]
+    },
+    {
+      "id": "section-6-events",
+      "selector": ".Home_eventCarouselBanner__DfR_P",
+      "type": "event-banner",
+      "stylingNotes": "Full-width background image with dark overlay, event details overlaid. Title 'Events' in overlay text. Single event card displayed at a time.",
+      "contentSequences": [
+        {
+          "type": "image",
+          "element": "picture > img",
+          "src": "https://a.storyblok.com/f/88791/1024x576/c823453616/officer-training-sandhurst.jpg/m/1920x760/filters:focal(502x368:503x369)/",
+          "alt": "A group of soldiers in red uniforms and black hats march in formation"
+        },
+        {
+          "type": "heading",
+          "tag": "h4",
+          "text": "Army Officer Insight Day - RMAS"
+        },
+        {
+          "type": "event-details",
+          "date": "Saturday, 14 March 2026",
+          "time": "09:00 - 16:00",
+          "location": "Camberley",
+          "postcode": "GU15 4NP"
+        },
+        {
+          "type": "cta-group",
+          "ctas": [
+            {"text": "View Event Details", "href": "/meet-your-army/100029/"},
+            {"text": "View All Events", "href": "/meet-your-army/"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section-7-explore-roles",
+      "selector": ".Home_featureTwoBanner__TGHfs",
+      "type": "feature-promo",
+      "stylingNotes": "Full-width section with grunge texture overlay, text content centered with orange CTA button",
+      "contentSequences": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "text": "Explore Army Roles"
+        },
+        {
+          "type": "paragraph",
+          "text": "Something for everyone — The Army has many different careers available for people wanting to join as a Soldier or Officer."
+        },
+        {
+          "type": "cta",
+          "text": "Army role finder",
+          "href": "/regular-army/find-a-role/"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "local": ["accordion", "cards", "carousel", "columns", "embed", "footer", "form", "fragment", "header", "hero", "modal", "quote", "search", "table", "tabs", "video"],
+    "blockCollection": ["hero", "cards", "columns", "carousel", "tabs", "accordion", "embed", "video", "quote", "table", "form"]
+  }
+}

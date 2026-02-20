@@ -1,0 +1,42 @@
+{
+  "templates": [
+    {
+      "name": "army-homepage",
+      "urls": ["https://jobs.army.mod.uk"],
+      "description": "British Army jobs homepage with hero banners, two-column CTAs, feature card carousel, events, and promo sections",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            ".Home_hero__0PjU_",
+            ".Home_campaignBanner__hPAws",
+            ".Home_eventCarouselBanner__DfR_P"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [".Home_heroActions__S7X92"]
+        },
+        {
+          "name": "feature-cards",
+          "instances": [".CarouselCards_carouselCards__F5Ozh"]
+        },
+        {
+          "name": "section-find-your-fit",
+          "instances": [".Home_featureOneBanner__nPTY7"],
+          "section": "default-content"
+        },
+        {
+          "name": "section-be-the-best",
+          "instances": [".Home_recruitment__gxPG6"],
+          "section": "default-content"
+        },
+        {
+          "name": "section-explore-roles",
+          "instances": [".Home_featureTwoBanner__TGHfs"],
+          "section": "default-content"
+        }
+      ]
+    }
+  ]
+}

@@ -298,8 +298,9 @@ header nav .nav-sections .nav-promo {
     border-bottom: none;
   }
 
-  /* category link styling */
-  header nav .nav-sections .nav-mega-menu > ul > li > a {
+  /* category link styling - handles both direct <a> and EDS pipeline <p><a> */
+  header nav .nav-sections .nav-mega-menu > ul > li > a,
+  header nav .nav-sections .nav-mega-menu > ul > li > p > a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -312,13 +313,24 @@ header nav .nav-sections .nav-promo {
     transition: background-color 0.2s;
   }
 
-  header nav .nav-sections .nav-mega-menu > ul > li > a:hover,
-  header nav .nav-sections .nav-mega-menu > ul > li[aria-expanded='true'] > a {
-    background-color: #f0f0f0;
+  /* reset p margin inside mega-menu categories */
+  header nav .nav-sections .nav-mega-menu > ul > li > p {
+    margin: 0;
+    line-height: 1;
   }
 
+  /* stylelint-disable no-descending-specificity */
+  header nav .nav-sections .nav-mega-menu > ul > li > a:hover,
+  header nav .nav-sections .nav-mega-menu > ul > li > p > a:hover,
+  header nav .nav-sections .nav-mega-menu > ul > li[aria-expanded='true'] > a,
+  header nav .nav-sections .nav-mega-menu > ul > li[aria-expanded='true'] > p > a {
+    background-color: #f0f0f0;
+  }
+  /* stylelint-enable no-descending-specificity */
+
   /* arrow icon for categories with sub-items */
-  header nav .nav-sections .nav-mega-menu > ul > li.has-children > a::after {
+  header nav .nav-sections .nav-mega-menu > ul > li.has-children > a::after,
+  header nav .nav-sections .nav-mega-menu > ul > li.has-children > p > a::after {
     content: '';
     display: inline-block;
     width: 6px;
@@ -351,12 +363,14 @@ header nav .nav-sections .nav-promo {
     box-sizing: border-box;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .nav-mega-menu > ul > li > ul > li {
     padding: 6px 0;
     font-weight: 400;
     font-size: var(--body-font-size-s);
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .nav-mega-menu > ul > li > ul > li a {
     text-decoration: none;
     color: var(--text-color);
@@ -394,12 +408,14 @@ header nav .nav-sections .nav-promo {
   }
 
   /* keep promo content above the overlay */
+  /* stylelint-disable no-descending-specificity */
   header nav .nav-sections .nav-promo .nav-promo-title,
   header nav .nav-sections .nav-promo .nav-promo-desc,
   header nav .nav-sections .nav-promo a {
     position: relative;
     z-index: 2;
   }
+  /* stylelint-enable no-descending-specificity */
 
   header nav .nav-sections .nav-promo .nav-promo-title {
     font-weight: 700;
@@ -415,6 +431,7 @@ header nav .nav-sections .nav-promo {
     color: #ccc;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .nav-promo a {
     display: inline-block;
     padding: 10px 20px;
@@ -428,6 +445,7 @@ header nav .nav-sections .nav-promo {
     transition: background-color 0.2s;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .nav-promo a:hover {
     background-color: #e55e00;
   }
@@ -438,6 +456,7 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools ul {
   list-style: none;
   padding: 0;

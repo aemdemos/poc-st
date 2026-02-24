@@ -39,6 +39,7 @@
 
   /* nav heights */
   --nav-height: 64px;
+  --util-bar-height: 32px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }
@@ -102,8 +103,12 @@ footer .footer[data-block-status="loaded"] {
 }
 
 @media (width >= 900px) {
+  :root {
+    --header-height: calc(var(--nav-height) + var(--util-bar-height));
+  }
+
   body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
+    --header-height: calc(var(--nav-height) + var(--util-bar-height) + var(--breadcrumbs-height));
   }
 }
 

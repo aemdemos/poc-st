@@ -246,7 +246,8 @@ export default async function decorate(block) {
         megaMenu.append(categoryList);
 
         // add promo panel if data exists for this dropdown
-        const sectionLabel = navSection.querySelector(':scope > strong')?.textContent?.trim();
+        // use broad selector: EDS pipeline may wrap <strong> in <p> tags
+        const sectionLabel = (navSection.querySelector(':scope > strong') || navSection.querySelector(':scope > p > strong'))?.textContent?.trim();
         const promo = promoData[sectionLabel];
         if (promo) {
           const promoDiv = document.createElement('div');
@@ -270,7 +271,8 @@ export default async function decorate(block) {
           category.classList.add('has-children');
           category.setAttribute('aria-expanded', 'false');
 
-          const categoryLink = category.querySelector(':scope > a');
+          // EDS pipeline may wrap <a> in <p> tags
+          const categoryLink = category.querySelector(':scope > a') || category.querySelector(':scope > p > a');
           category.addEventListener('click', (e) => {
             if (isDesktop.matches) {
               e.stopPropagation();

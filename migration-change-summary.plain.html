@@ -1,0 +1,202 @@
+<div><h1 id="british-army-header-migration---change-summary">British Army Header Migration - Change Summary</h1><p><strong>Source Site:</strong> https://jobs.army.mod.uk/
+<strong>Branch:</strong> aem-20260219-1407
+<strong>Date:</strong> 2026-02-23</p></div>
+<div><h2 id="overview">Overview</h2><p>This document covers all file changes made during the migration of the British Army website header to Adobe Edge Delivery Services. The work involved building a navigation structure, implementing a two-row header layout with mega-menu dropdowns, utility bar, CTA buttons, search icon, and promo panels — all matching the original site's design.</p></div>
+<div><h2 id="file-change-summary">File Change Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div><code>blocks/header/header.css</code></div><div>Modified</div><div>+326 / -3</div></div><div><div>2</div><div><code>blocks/header/header.js</code></div><div>Modified</div><div>+125 / -1</div></div><div><div>3</div><div><code>icons/search.svg</code></div><div>Modified</div><div>+5 / -5</div></div><div><div>4</div><div><code>styles/styles.css</code></div><div>Modified</div><div>+7 / -1</div></div><div><div>5</div><div><code>nav.md</code></div><div>New (untracked)</div><div>Navigation content</div></div><div><div>6</div><div><code>nav.html</code></div><div>New (untracked)</div><div>DA-compliant nav HTML</div></div><div><div>7</div><div><code>content/nav.md</code></div><div>New (untracked)</div><div>Copy for content view</div></div><div><div>8</div><div><code>content/nav.html</code></div><div>New (untracked)</div><div>Copy for content view</div></div></div></div>
+<div><h2 id="detailed-file-changes">Detailed File Changes</h2><h3 id="blocksheaderheadercss">1. <code>blocks/header/header.css</code></h3><p><strong>Purpose:</strong> Complete CSS for the migrated header, including two-row grid layout, mega-menu, utility bar, CTA buttons, search icon, and promo panels.</p><p><strong>Key Changes:</strong></p><h4 id="a-two-row-grid-layout-desktop">a) Two-Row Grid Layout (Desktop)</h4><ul>
+<li>Changed from single-row flex layout to a two-row CSS grid on desktop (900px+)</li>
+<li><strong>Row 1 (Utility Bar):</strong> Spans full width, contains utility links (My Account, Contact Us, Blog, Ask a Soldier, Meet Your Army) with pipe <code>|</code> separators and a search icon</li>
+<li><strong>Row 2 (Main Nav):</strong> Logo/brand on left, dropdown sections in center, CTA buttons on right</li>
+<li>Grid template: <code>'tools tools tools' auto / 'brand sections cta' var(--nav-height) / auto 1fr auto</code></li>
+<li>The <code>aria-expanded='true'</code> state on desktop preserves the same grid template to prevent layout collapse when mega-menu opens</li>
+</ul><h4 id="b-mega-menu-nav-mega-menu">b) Mega-Menu (<code>.nav-mega-menu</code>)</h4><ul>
+<li>Three-column layout inside each dropdown: categories list (250px) | sub-items panel (240px) | promo panel (280px)</li>
+<li>Absolutely positioned below dropdown trigger with arrow pointer on top</li>
+<li>Categories show expand/collapse arrows for items with children</li>
+<li>Sub-items appear to the right of the selected category via <code>position: absolute; left: 100%</code></li>
+<li>Box shadow for depth effect</li>
+</ul><h4 id="c-promo-panel-nav-promo">c) Promo Panel (<code>.nav-promo</code>)</h4><ul>
+<li>Fixed 280px width panel on right side of mega-menu</li>
+<li>Background image with dark gradient overlay (<code>linear-gradient</code>) for text readability</li>
+<li>Contains title, description, and orange CTA link button</li>
+<li>Content sits above overlay via <code>z-index: 2</code></li>
+<li>Hidden on mobile (<code>display: none</code>)</li>
+</ul><h4 id="d-utility-bar-nav-tools">d) Utility Bar (<code>.nav-tools</code>)</h4><ul>
+<li>Utility links displayed as horizontal list with pipe <code>|</code> separators (<code>::before</code> pseudo-elements)</li>
+<li>Font: 14px, bold (700)</li>
+<li>Right-aligned in the top row of the grid</li>
+<li>Search icon (last item) has no pipe separator before it</li>
+</ul><h4 id="e-search-icon-nav-search-btn">e) Search Icon (<code>.nav-search-btn</code>)</h4><ul>
+<li>Pill-shaped button with 1px solid #ccc border and 16px border-radius</li>
+<li>Contains 20x20px magnifying glass icon</li>
+<li>No background, cursor pointer</li>
+</ul><h4 id="f-cta-buttons-nav-cta">f) CTA Buttons (<code>.nav-cta</code>)</h4><ul>
+<li>"Find a Recruiting Centre": transparent background, 2px solid dark border, uppercase, 14px, 1px letter-spacing</li>
+<li>"Apply Now": #ff661c (orange) background, 2px solid matching border, uppercase</li>
+<li>Hover states: outline fills dark, orange darkens to #e55a16</li>
+<li>Hidden on mobile (<code>display: none</code>)</li>
+</ul><h4 id="g-breadcrumbs">g) Breadcrumbs</h4><ul>
+<li>Positioned below the header</li>
+<li>Uses ordered list with <code>/</code> separators</li>
+<li>Hidden on mobile, visible at 900px+</li>
+</ul></div>
+<div><h3 id="blocksheaderheaderjs">2. <code>blocks/header/header.js</code></h3><p><strong>Purpose:</strong> JavaScript decoration for the header block, including mega-menu behavior, category expand/collapse, utility bar splitting, and CTA button extraction.</p><p><strong>Key Changes:</strong></p><h4 id="a-promo-data-configuration-lines-202-224">a) Promo Data Configuration (lines 202-224)</h4><ul>
+<li>Static promo content object for three dropdown sections:
+<ul>
+<li><strong>Regular Army:</strong> "Explore an Army Base" with base tour image</li>
+<li><strong>Army Reserve:</strong> "What's it like?" with reserve screenshot image</li>
+<li><strong>How to Join:</strong> "Find your fit" with soldier image</li>
+</ul>
+</li>
+<li>Each entry has: title, description, CTA text, URL, and background image URL</li>
+</ul><h4 id="b-mega-menu-dom-construction-lines-238-264">b) Mega-Menu DOM Construction (lines 238-264)</h4><ul>
+<li>For each nav section with child <code>&#x3C;ul></code>, creates a <code>.nav-mega-menu</code> wrapper div</li>
+<li>Moves the category list inside the mega-menu wrapper</li>
+<li>Looks up promo data by matching the section's <code>&#x3C;strong></code> label text</li>
+<li>If promo data exists, creates a <code>.nav-promo</code> div with background-image, title, description, and CTA link</li>
+</ul><h4 id="c-two-level-category-expandcollapse-lines-267-289">c) Two-Level Category Expand/Collapse (lines 267-289)</h4><ul>
+<li>Categories with sub-lists get <code>.has-children</code> class and <code>aria-expanded="false"</code></li>
+<li>Click handler on desktop: toggles <code>aria-expanded</code>, collapses sibling categories first</li>
+<li>Clicking the category header link toggles expand (prevents navigation); clicking sub-links navigates normally</li>
+</ul><h4 id="d-utility-bar--cta-split-lines-297-343">d) Utility Bar / CTA Split (lines 297-343)</h4><ul>
+<li>Iterates all <code>&#x3C;li></code> items in the tools section</li>
+<li>Separates items into two groups based on text content:
+<ul>
+<li><strong>Utility links:</strong> My Account, Contact Us, Blog, Ask a Soldier, Meet Your Army</li>
+<li><strong>CTA items:</strong> "Find a Recruiting Centre" and "Apply Now"</li>
+</ul>
+</li>
+<li>Appends a search icon <code>&#x3C;li></code> with a <code>&#x3C;button></code> element to the utility links</li>
+<li>Rebuilds the tools <code>&#x3C;ul></code> with only utility items</li>
+<li>Creates a new <code>.nav-cta</code> div with the CTA links, applying appropriate CSS classes:
+<ul>
+<li>"Apply Now" gets <code>.nav-cta-btn .nav-cta-apply</code></li>
+<li>"Find a Recruiting Centre" gets <code>.nav-cta-btn .nav-cta-outline</code></li>
+</ul>
+</li>
+<li>Inserts the CTA div before <code>.nav-tools</code> in the nav element</li>
+</ul></div>
+<div><h3 id="iconssearchsvg">3. <code>icons/search.svg</code></h3><p><strong>Purpose:</strong> Magnifying glass search icon extracted from the original site header.</p><p><strong>Change:</strong> Replaced placeholder SVG with the original site's search icon design.</p><p><strong>Details:</strong></p><ul>
+<li>26x27px viewBox, <code>fill="none"</code> (outline style)</li>
+<li>Two paths: diagonal line (search handle) + circle (lens)</li>
+<li>Uses <code>stroke="currentColor"</code> so it inherits text color from parent</li>
+<li>Stroke width: 2.2px, round/square line caps</li>
+</ul></div>
+<div><h3 id="stylesstylescss">4. <code>styles/styles.css</code></h3><p><strong>Purpose:</strong> Global styles including header height calculation for two-row layout.</p><p><strong>Key Changes:</strong></p><h4 id="a-new-css-custom-property-line-42">a) New CSS Custom Property (line 42)</h4><pre><code class="language-css">--util-bar-height: 32px;
+</code></pre><p>Added to <code>:root</code> to define the height of the utility bar row.</p><h4 id="b-updated-desktop-header-height-lines-105-113">b) Updated Desktop Header Height (lines 105-113)</h4><pre><code class="language-css">@media (width >= 900px) {
+  :root {
+    --header-height: calc(var(--nav-height) + var(--util-bar-height));
+  }
+  body[data-breadcrumbs] {
+    --header-height: calc(var(--nav-height) + var(--util-bar-height) + var(--breadcrumbs-height));
+  }
+}
+</code></pre><ul>
+<li>On desktop, <code>--header-height</code> now accounts for both the utility bar (32px) and main nav (64px) = 96px total</li>
+<li>When breadcrumbs are enabled, adds <code>--breadcrumbs-height</code> (34px) for a total of 130px</li>
+<li>On mobile, <code>--header-height</code> remains <code>var(--nav-height)</code> (64px) since utility bar is inside mobile menu</li>
+</ul></div>
+<div><h3 id="navmd-new-file">5. <code>nav.md</code> (New File)</h3><p><strong>Purpose:</strong> Navigation content in Edge Delivery Services markdown format, consumed by the header block.</p><p><strong>Structure:</strong>
+Three sections separated by <code>---</code> horizontal rules:</p><ol>
+<li><strong>Brand Section:</strong> Single list item linking to homepage with "The British Army" text</li>
+<li><strong>Navigation Sections:</strong> Three top-level dropdown menus:
+<ul>
+<li><strong>Regular Army</strong> — 10 categories (Army Life, Types of Roles, Ways to Join, Inclusion &#x26; Values, What You Get, Find a Role, Find a Recruitment Centre, Events, FAQs), each with sub-links</li>
+<li><strong>Army Reserve</strong> — 6 categories (Life in the Army Reserve, Ways to Join, Find a Reserve Centre, FAQs, Available Roles, Reservists Q&#x26;A Chats)</li>
+<li><strong>How to Join</strong> — 5 categories (Application Process, Can I Apply, Army Assessment, Training, Find Your Fit)</li>
+</ul>
+</li>
+<li><strong>Tools Section:</strong> 7 utility/action links (My Account, Contact Us, Blog, Ask a Soldier, Meet Your Army, Find a Recruiting Centre, Apply Now)</li>
+</ol></div>
+<div><h3 id="navhtml-new-file">6. <code>nav.html</code> (New File)</h3><p><strong>Purpose:</strong> Document Authoring (DA) compliant HTML version of the navigation, used by the Edge Delivery Services rendering pipeline.</p><p><strong>Structure:</strong> Same content as <code>nav.md</code> but in HTML format wrapped in <code>&#x3C;body>&#x3C;main></code> tags with three <code>&#x3C;div></code> sections (brand, sections, tools).</p></div>
+<div><h3 id="contentnavmd-and-contentnavhtml-new-files">7. <code>content/nav.md</code> and <code>content/nav.html</code> (New Files)</h3><p><strong>Purpose:</strong> Copies of nav.md and nav.html placed in the <code>/content/</code> directory so they appear in the AEM Coder content view at https://aemcoder.adobe.io/chat/content.</p><p><strong>Content:</strong> Identical to the root-level nav.md and nav.html files.</p></div>
+<div><h2 id="architecture-summary">Architecture Summary</h2><h3 id="header-layout-desktop">Header Layout (Desktop)</h3><pre><code>+-------------------------------------------------------------------+------------+------+-----------------+
+|  [Utility Bar]  My Account                                        | Contact Us | Blog | ...  [Search]   |
++-------------------------------------------------------------------+------------+------+-----------------+
+|  [Logo]   Regular Army  Army Reserve  How to Join    [CTAs]       |
++-------------------------------------------------------------------+------------+------+-----------------+
+</code></pre><h3 id="header-layout-mobile">Header Layout (Mobile)</h3><pre><code>+----------------------------------+
+|  [Hamburger]  [Brand]  [Tools]   |
++----------------------------------+
+|  (Expandable menu below)         |
++----------------------------------+
+</code></pre><h3 id="mega-menu-structure-desktop">Mega-Menu Structure (Desktop)</h3><pre><code>+--------------------+-------------------+----------+
+| Categories (250px) | Sub-items (240px) | Promo    |
+|                    |                   | (280px)  |
+| > Army Life        | Explore Base      |          |
+|   Types of Roles   | Army vs Civvy     | [image]  |
+|   Ways to Join     | Day to Day        |          |
+|   ...              | ...               | Title    |
+|                    |                   | Desc     |
+|                    |                   | [CTA]    |
++--------------------+-------------------+----------+
+</code></pre></div>
+<div><h2 id="pending-items">Pending Items</h2><ol>
+<li><strong>British Army Logo SVG</strong> — The logo SVG has been extracted from the original site but has not yet been saved to <code>/icons/</code> or wired into the header brand section. Currently "The British Army" displays as text.</li>
+</ol></div>
+<div><h2 id="notes">Notes</h2><ul>
+<li>All navigation links and URLs match the original site structure</li>
+<li>Promo panel background images reference Storyblok CDN URLs from the original site</li>
+<li>The search icon is visual only (no search logic implemented yet)</li>
+<li>CTA buttons are hidden on mobile — they appear in the mobile menu as regular links</li>
+<li>The <code>metadata</code> block and <code>footer</code> block produce console errors (404) as they have not been migrated yet — this is expected and does not affect header functionality</li>
+</ul></div>

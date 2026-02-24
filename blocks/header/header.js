@@ -198,6 +198,31 @@ export default async function decorate(block) {
     brandLink.closest('.button-container').className = '';
   }
 
+  // promo content for each dropdown section (matched by dropdown label text)
+  const promoData = {
+    'Regular Army': {
+      title: 'Explore an Army Base',
+      description: 'See what life is like on a base with our interactive Base Tour experience',
+      cta: 'Explore an Army Base',
+      url: '/regular-army/army-life/base-tour/',
+      image: 'https://a.storyblok.com/f/88791/750x1334/6cb4ff36cf/base-tour.png/m/450x540/filters:focal(347x828:348x829)/',
+    },
+    'Army Reserve': {
+      title: "What's it like?",
+      description: 'Check out our chats that cover everything from your first visit to heading off on your first training camp.',
+      cta: 'Reserve Q&A Chats',
+      url: '/army-reserve/reservists-qa-dms/',
+      image: 'https://a.storyblok.com/f/88791/355x728/ce283bf0c0/reserve-dm-screenshot.png/m/450x540/filters:focal(191x336:192x337)/',
+    },
+    'How to Join': {
+      title: 'Find your fit',
+      description: 'Are you not quite sure the best way to join is? Discover where you could fit best and what is available.',
+      cta: 'Where to start',
+      url: '/how-to-join/find-your-fit/',
+      image: 'https://a.storyblok.com/f/88791/1800x1350/2c700ce461/hp-hero-soldier-on-steps2.png/m/450x540/smart',
+    },
+  };
+
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
@@ -209,6 +234,59 @@ export default async function decorate(block) {
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
         }
       });
+
+      // build mega-menu wrapper with categories + promo panel
+      const categoryList = navSection.querySelector(':scope > ul');
+      if (categoryList) {
+        const megaMenu = document.createElement('div');
+        megaMenu.className = 'nav-mega-menu';
+
+        // move category list into mega-menu wrapper
+        navSection.insertBefore(megaMenu, categoryList);
+        megaMenu.append(categoryList);
+
+        // add promo panel if data exists for this dropdown
+        const sectionLabel = navSection.querySelector(':scope > strong')?.textContent?.trim();
+        const promo = promoData[sectionLabel];
+        if (promo) {
+          const promoDiv = document.createElement('div');
+          promoDiv.className = 'nav-promo';
+          if (promo.image) {
+            promoDiv.style.backgroundImage = `url('${promo.image}')`;
+          }
+          promoDiv.innerHTML = `
+            <p class="nav-promo-title">${promo.title}</p>
+            <p class="nav-promo-desc">${promo.description}</p>
+            <a href="${promo.url}">${promo.cta}</a>
+          `;
+          megaMenu.append(promoDiv);
+        }
+      }
+
+      // setup second-level category expand/collapse
+      navSection.querySelectorAll(':scope > .nav-mega-menu > ul > li').forEach((category) => {
+        const subList = category.querySelector(':scope > ul');
+        if (subList) {
+          category.classList.add('has-children');
+          category.setAttribute('aria-expanded', 'false');
+
+          const categoryLink = category.querySelector(':scope > a');
+          category.addEventListener('click', (e) => {
+            if (isDesktop.matches) {
+              e.stopPropagation();
+              const clickedLink = e.target.closest('a');
+              if (!clickedLink || clickedLink === categoryLink) {
+                e.preventDefault();
+                const catExpanded = category.getAttribute('aria-expanded') === 'true';
+                category.closest('ul').querySelectorAll(':scope > li').forEach((sibling) => {
+                  sibling.setAttribute('aria-expanded', 'false');
+                });
+                category.setAttribute('aria-expanded', catExpanded ? 'false' : 'true');
+              }
+            }
+          });
+        }
+      });
     });
     navSections.querySelectorAll('.button-container').forEach((buttonContainer) => {
       buttonContainer.classList.remove('button-container');
@@ -218,9 +296,50 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
-    const search = navTools.querySelector('a[href*="search"]');
-    if (search && search.textContent === '') {
-      search.setAttribute('aria-label', 'Search');
+    const toolsList = navTools.querySelector('ul');
+    if (toolsList) {
+      const allItems = [...toolsList.querySelectorAll(':scope > li')];
+      // separate CTA buttons ("Find a Recruiting Centre" and "Apply Now") from utility links
+      const ctaLabels = ['find a recruiting centre', 'apply now'];
+      const utilityItems = [];
+      const ctaItems = [];
+      allItems.forEach((li) => {
+        const linkText = li.textContent.trim().toLowerCase();
+        if (ctaLabels.includes(linkText)) {
+          ctaItems.push(li);
+        } else {
+          utilityItems.push(li);
+        }
+      });
+
+      // add search icon to utility links
+      const searchItem = document.createElement('li');
+      searchItem.className = 'nav-search';
+      searchItem.innerHTML = '<button class="nav-search-btn" aria-label="Search"><span class="icon icon-search"><img data-icon-name="search" src="/icons/search.svg" alt="Search" loading="lazy"></span></button>';
+      utilityItems.push(searchItem);
+
+      // rebuild tools list with only utility links
+      toolsList.innerHTML = '';
+      utilityItems.forEach((li) => toolsList.append(li));
+
+      // create CTA buttons container in the main nav row
+      if (ctaItems.length > 0) {
+        const ctaNav = document.createElement('div');
+        ctaNav.className = 'nav-cta';
+        ctaItems.forEach((li) => {
+          const link = li.querySelector('a');
+          if (link) {
+            const linkText = link.textContent.trim().toLowerCase();
+            if (linkText === 'apply now') {
+              link.classList.add('nav-cta-btn', 'nav-cta-apply');
+            } else {
+              link.classList.add('nav-cta-btn', 'nav-cta-outline');
+            }
+            ctaNav.append(link);
+          }
+        });
+        nav.insertBefore(ctaNav, navTools);
+      }
     }
   }
 

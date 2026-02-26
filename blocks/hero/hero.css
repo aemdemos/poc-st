@@ -1,27 +1,32 @@
-.hero-container .hero-wrapper {
+/* Hero Block — Full-width background image with overlaid content */
+
+/* Container: remove section constraints for full-bleed */
+.hero-container {
   max-width: unset;
   padding: 0;
 }
 
+.hero-container > div {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Block wrapper */
 .hero {
   position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   padding: 40px 24px;
-  min-height: 300px;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
+/* Background image layer */
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
 .hero img {
@@ -30,8 +35,106 @@
   height: 100%;
 }
 
+/* Dark gradient overlay for text readability */
+.hero > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero > div:first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, transparent 60%);
+  z-index: 1;
+}
+
+/* Content layer */
+.hero > div:last-child {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Hero heading */
+.hero h1,
+.hero h2 {
+  color: var(--white);
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 30%);
+}
+
+.hero h1 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 0.8;
+}
+
+.hero h2 {
+  font-size: var(--heading-font-size-xl);
+  line-height: 0.8;
+}
+
+/* Hero paragraph text */
+.hero p {
+  color: var(--white);
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+/* Hero CTA buttons */
+.hero a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.hero p a {
+  display: inline-block;
+  padding: var(--button-padding);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  line-height: 1;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  transition: var(--button-transition);
+}
+
+/* Multiple CTAs in the same paragraph */
+.hero p a + a {
+  margin-left: 12px;
+  background-color: transparent;
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.hero p a:hover {
+  background-color: var(--accent-hover-color);
+  border-color: var(--accent-hover-color);
+}
+
+.hero p a + a:hover {
+  background-color: var(--white);
+  color: var(--text-color);
+}
+
+/* Desktop */
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 500px;
+    padding: 60px 32px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero {
+    min-height: 600px;
+    padding: 80px 60px;
   }
 }

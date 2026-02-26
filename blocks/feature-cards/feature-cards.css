@@ -112,7 +112,7 @@
   font-weight: 900;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255 255 255 / 15%);
+  -webkit-text-stroke: 2px rgb(255 255 255 / 15%);
   pointer-events: none;
   z-index: 0;
 }
@@ -131,9 +131,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid rgba(255 255 255 / 50%);
+  border: 2px solid rgb(255 255 255 / 50%);
   background: transparent;
-  color: rgba(255 255 255 / 70%);
+  color: rgb(255 255 255 / 70%);
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -160,7 +160,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid rgba(255 255 255 / 50%);
+  border: 2px solid rgb(255 255 255 / 50%);
   background: transparent;
   cursor: pointer;
   padding: 0;
@@ -177,7 +177,7 @@
 }
 
 /* Tablet breakpoint - 2 cards visible */
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .feature-cards li {
     flex: 0 0 calc(50% - 10px);
   }
@@ -188,7 +188,7 @@
 }
 
 /* Medium breakpoint - 3 cards visible */
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .feature-cards li {
     flex: 0 0 calc(33.333% - 14px);
   }
@@ -199,7 +199,7 @@
 }
 
 /* Desktop breakpoint - 4 cards visible */
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
   .feature-cards li {
     flex: 0 0 calc(25% - 15px);
   }

@@ -347,11 +347,18 @@ main .section.dark a.button:any-link {
   color: var(--text-color);
 }
 
-/* section metadata — olive/green */
+/* section metadata — olive/khaki */
 main .section.olive {
   background-color: var(--olive-accent);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.olive a.button:any-link {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--text-color);
+  min-width: 280px;
 }
 
 main .section.green {
@@ -365,4 +372,49 @@ main .section.accent {
   background-color: var(--accent-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.accent a.button:any-link {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--text-color);
+  min-width: 280px;
+}
+
+/* section metadata — bronze/brown */
+main .section.bronze {
+  background-color: #8b4513;
+  color: var(--white);
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.bronze h1,
+main .section.bronze h2,
+main .section.bronze h3,
+main .section.bronze h4,
+main .section.bronze h5,
+main .section.bronze h6 {
+  color: var(--white);
+}
+
+main .section.bronze a.button:any-link {
+  background-color: rgb(128 128 128 / 70%);
+  border-color: rgb(128 128 128 / 70%);
+  color: var(--text-color);
+  min-width: 280px;
+}
+
+/* section metadata — centered */
+main .section.centered {
+  text-align: center;
+}
+
+main .section.centered > div {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+main .section.centered a.button:any-link {
+  min-width: 280px;
 }

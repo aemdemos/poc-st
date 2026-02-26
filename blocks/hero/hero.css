@@ -1,25 +1,15 @@
 /* Hero Block — Full-width background image with overlaid content */
 
-/* Container: remove section constraints for full-bleed */
-.hero-container {
-  max-width: unset;
-  padding: 0;
-}
-
-.hero-container > div {
-  max-width: unset;
-  padding: 0;
-}
-
 /* Block wrapper */
 .hero {
   position: relative;
-  min-height: 400px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 40px 24px;
   overflow: hidden;
+  border-radius: 0 0 30px 30px;
 }
 
 /* Background image layer */
@@ -124,17 +114,37 @@
   color: var(--text-color);
 }
 
+/* Container: remove section constraints for full-bleed
+   Placed after block rules to satisfy no-descending-specificity */
+main > .section.hero-container {
+  margin: 0;
+  padding: 0;
+}
+
+main > .section.hero-container > div {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Tablet */
+@media (width >= 600px) {
+  .hero {
+    min-height: 600px;
+    padding: 60px 32px;
+  }
+}
+
 /* Desktop */
 @media (width >= 900px) {
   .hero {
-    min-height: 500px;
+    min-height: 700px;
     padding: 60px 32px;
   }
 }
 
 @media (width >= 1200px) {
   .hero {
-    min-height: 600px;
+    min-height: 800px;
     padding: 80px 60px;
   }
 }

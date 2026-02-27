@@ -347,11 +347,61 @@ main .section.dark a.button:any-link {
   color: var(--text-color);
 }
 
+/* section metadata — beige (Find Your Fit) */
+main .section.beige {
+  background-color: rgb(229 226 218);
+  background-image:
+    linear-gradient(to bottom, rgb(229 226 218 / 40%) 0%, rgb(229 226 218 / 50%) 100%),
+    url('https://jobs.army.mod.uk/assets/images/background-grunge.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 800px;
+  position: relative;
+}
+
+main .section.beige::after {
+  content: '';
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 125px;
+  height: 157px;
+  background-image: url("data:image/svg+xml,%3Csvg width='125' height='157' viewBox='0 0 125 157' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M62.5 0L62.5 156M62.5 156L124 94.7012M62.5 156L1 94.7012' stroke='%23FF661C'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+main .section.beige h2 {
+  font-size: 100px;
+  letter-spacing: -1px;
+}
+
 /* section metadata — olive/khaki */
 main .section.olive {
   background-color: var(--olive-accent);
+  background-image:
+    linear-gradient(to bottom, rgb(161 159 122 / 60%) 0%, rgb(161 159 122 / 70%) 100%),
+    url('https://jobs.army.mod.uk/assets/images/background-grunge.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 0;
-  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 800px;
+}
+
+main .section.olive h2 {
+  font-size: 100px;
+  letter-spacing: -1px;
 }
 
 main .section.olive a.button:any-link {
@@ -381,6 +431,32 @@ main .section.accent a.button:any-link {
   min-width: 280px;
 }
 
+main .section.accent h3 {
+  font-size: var(--heading-font-size-xl);
+}
+
+/* section metadata — centered */
+main .section.centered {
+  text-align: center;
+}
+
+main .section.centered > div {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+main .section.centered a.button:any-link {
+  min-width: 280px;
+}
+
+main .section.accent.centered {
+  padding: 0;
+}
+
+main .section.accent.centered > div {
+  padding: 50px 30px;
+}
+
 /* section metadata — bronze/brown */
 main .section.bronze {
   background-color: #8b4513;
@@ -405,16 +481,11 @@ main .section.bronze a.button:any-link {
   min-width: 280px;
 }
 
-/* section metadata — centered */
-main .section.centered {
-  text-align: center;
-}
-
-main .section.centered > div {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-main .section.centered a.button:any-link {
-  min-width: 280px;
+/* Large display headings for feature sections — desktop */
+@media (width >= 1200px) {
+  main .section.beige h2,
+  main .section.olive h2 {
+    font-size: 160px;
+    letter-spacing: -1.6px;
+  }
 }

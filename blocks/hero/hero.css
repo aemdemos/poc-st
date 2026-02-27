@@ -137,14 +137,155 @@ main > .section.hero-container > div {
 /* Desktop */
 @media (width >= 900px) {
   .hero {
-    min-height: 700px;
+    min-height: 570px;
     padding: 60px 32px;
+  }
+
+  .hero h1 {
+    font-size: 160px;
+  }
+
+  .hero h2 {
+    font-size: 80px;
   }
 }
 
 @media (width >= 1200px) {
   .hero {
-    min-height: 800px;
+    min-height: 650px;
     padding: 80px 60px;
   }
+
+  .hero h1 {
+    font-size: 200px;
+  }
+
+  .hero h2 {
+    font-size: 120px;
+  }
+
+  /* Events hero: smaller heading to match event card style */
+  .events .hero h2 {
+    font-size: 80px;
+  }
+}
+
+/* ============================================
+   Campaign variant — play button + two-column
+   ============================================ */
+
+.hero-campaign {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Video area with play button */
+.hero-video-area {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* Play button: orange circle */
+.hero-play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.hero-play-button:hover {
+  background-color: var(--accent-hover-color);
+  transform: scale(1.05);
+}
+
+/* Play triangle icon (CSS-only) */
+.hero-play-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 22px;
+  border-color: transparent transparent transparent var(--white);
+  margin-left: 4px;
+}
+
+/* Desktop: side-by-side layout */
+@media (width >= 900px) {
+  .hero-campaign {
+    flex-direction: row;
+  }
+
+  .hero-video-area {
+    width: 50%;
+    padding: 0;
+  }
+
+  .hero-campaign > div:last-child {
+    width: 50%;
+  }
+
+  .hero-play-button {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-play-icon {
+    border-width: 20px 0 20px 34px;
+    margin-left: 6px;
+  }
+}
+
+/* Video modal overlay */
+.hero-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgb(0 0 0 / 85%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video-modal-inner {
+  position: relative;
+  width: 90%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  background: rgb(0 0 0);
+  border-radius: 8px;
+}
+
+.hero-video-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.hero-video-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255 255 255 / 40%);
+  font-size: 24px;
 }

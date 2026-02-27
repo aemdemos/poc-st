@@ -9,9 +9,26 @@ function getVisibleCount() {
   return 1;
 }
 
+function getCardStep(items) {
+  if (items.length < 2) return items[0].offsetWidth;
+  return items[1].getBoundingClientRect().left - items[0].getBoundingClientRect().left;
+}
+
 function buildCarouselNav(block, ul) {
   const items = ul.querySelectorAll('li');
   const totalItems = items.length;
+  const abortController = new AbortController();
+
+  block.setAttribute('role', 'region');
+  block.setAttribute('aria-roledescription', 'carousel');
+  block.setAttribute('aria-label', 'Featured cards');
+  ul.setAttribute('aria-label', 'Cards');
+
+  const liveRegion = document.createElement('div');
+  liveRegion.setAttribute('aria-live', 'polite');
+  liveRegion.setAttribute('aria-atomic', 'true');
+  liveRegion.className = 'feature-cards-live-region';
+  block.append(liveRegion);
 
   const prevBtn = document.createElement('button');
   prevBtn.className = 'feature-cards-arrow feature-cards-arrow-prev';
@@ -25,6 +42,8 @@ function buildCarouselNav(block, ul) {
 
   const dotsContainer = document.createElement('div');
   dotsContainer.className = 'feature-cards-dots';
+  dotsContainer.setAttribute('role', 'tablist');
+  dotsContainer.setAttribute('aria-label', 'Card position');
 
   function buildDots() {
     dotsContainer.innerHTML = '';
@@ -33,10 +52,12 @@ function buildCarouselNav(block, ul) {
     for (let i = 0; i < dotCount; i += 1) {
       const dot = document.createElement('button');
       dot.className = 'feature-cards-dot';
+      dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', `Go to position ${i + 1}`);
+      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
       if (i === 0) dot.classList.add('active');
       dot.addEventListener('click', () => {
-        const cardWidth = items[0].offsetWidth + 20;
+        const cardWidth = getCardStep(items);
         ul.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
       });
       dotsContainer.append(dot);
@@ -47,13 +68,17 @@ function buildCarouselNav(block, ul) {
 
   const updateDots = () => {
     const { scrollLeft } = ul;
-    const cardWidth = items[0].offsetWidth + 20;
+    const cardWidth = getCardStep(items);
     const activeIndex = Math.round(scrollLeft / cardWidth);
+    const visibleCount = getVisibleCount();
     dotsContainer.querySelectorAll('.feature-cards-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === activeIndex);
+      const isActive = i === activeIndex;
+      dot.classList.toggle('active', isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
     });
+    liveRegion.textContent = `Showing cards ${activeIndex + 1} to ${Math.min(activeIndex + visibleCount, totalItems)} of ${totalItems}`;
   };
-  ul.addEventListener('scroll', updateDots, { passive: true });
+  ul.addEventListener('scroll', updateDots, { passive: true, signal: abortController.signal });
 
   let resizeTimer;
   window.addEventListener('resize', () => {
@@ -62,15 +87,13 @@ function buildCarouselNav(block, ul) {
       buildDots();
       updateDots();
     }, 150);
-  });
+  }, { signal: abortController.signal });
 
   prevBtn.addEventListener('click', () => {
-    const cardWidth = items[0].offsetWidth + 20;
-    ul.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    ul.scrollBy({ left: -getCardStep(items), behavior: 'smooth' });
   });
   nextBtn.addEventListener('click', () => {
-    const cardWidth = items[0].offsetWidth + 20;
-    ul.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    ul.scrollBy({ left: getCardStep(items), behavior: 'smooth' });
   });
 
   const nav = document.createElement('div');

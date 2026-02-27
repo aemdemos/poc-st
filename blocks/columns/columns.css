@@ -73,3 +73,67 @@
     padding-left: 40px;
   }
 }
+
+/* ============================================================
+   Hero CTA variant — columns directly after hero
+   The original site integrates an orange CTA section within
+   the hero. In EDS this is a separate columns block, so we
+   style it to visually connect with the hero above.
+   ============================================================ */
+
+/* Wrapper: full-width orange CTA bar matching original layout */
+.hero-container + .columns-container > .columns-wrapper {
+  max-width: unset;
+  margin-top: -40px;
+  background-color: var(--accent-color);
+  border-radius: 0 0 30px 30px;
+}
+
+/* Container: remove section constraints for full-bleed orange CTA
+   Placed after wrapper rules to satisfy no-descending-specificity */
+main > .section.hero-container + .section.columns-container {
+  margin: 0;
+  padding: 0;
+}
+
+main > .section.hero-container + .section.columns-container > div {
+  max-width: unset;
+  padding: 80px 30px 60px;
+}
+
+/* Constrain inner content within full-width orange bar */
+main > .section.hero-container + .section.columns-container .columns {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-container + .columns-container > .columns-wrapper .columns > div > div + div {
+  border-top-color: rgb(0 0 0 / 15%);
+}
+
+.hero-container + .columns-container > .columns-wrapper .columns h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  text-transform: none;
+}
+
+.hero-container + .columns-container > .columns-wrapper .columns p a {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+
+.hero-container + .columns-container > .columns-wrapper .columns p a:hover {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .hero-container + .columns-container > .columns-wrapper .columns > div > div + div {
+    border-top: none;
+    border-left: 1px solid rgb(0 0 0 / 15%);
+    padding-left: 40px;
+  }
+}

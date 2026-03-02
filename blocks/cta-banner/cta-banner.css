@@ -1,0 +1,129 @@
+/* CTA Banner Block
+ *
+ * Full-width coloured call-to-action bar. Background colour is set via
+ * section metadata classes (accent, dark-green, dark, light, beige).
+ *
+ * Variants:
+ *   .cta-banner-single  — centred heading + optional paragraph + button(s)
+ *   .cta-banner-dual    — two side-by-side columns, each with heading + paragraph + button
+ */
+
+/* ---- Block base ---- */
+.cta-banner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl) 24px;
+}
+
+/* ---- Single variant ---- */
+.cta-banner-single {
+  text-align: center;
+}
+
+.cta-banner-single h2,
+.cta-banner-single h3 {
+  margin-bottom: var(--spacing-s);
+}
+
+.cta-banner-single p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Dual variant ---- */
+.cta-banner-dual > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.cta-banner-column {
+  flex: 1;
+  padding: var(--spacing-m) 0;
+}
+
+.cta-banner-column + .cta-banner-column {
+  border-top: 1px solid rgb(0 0 0 / 15%);
+  padding-top: var(--spacing-l);
+}
+
+.cta-banner-column h2,
+.cta-banner-column h3 {
+  font-size: var(--heading-font-size-m);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cta-banner-column p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Button overrides for coloured backgrounds ---- */
+
+/* Accent (orange) background: white buttons */
+.accent .cta-banner a.button:any-link {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--text-color);
+  min-width: 280px;
+}
+
+.accent .cta-banner a.button:hover {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+}
+
+/* Dark-green background: orange buttons */
+.dark-green .cta-banner a.button:any-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.dark-green .cta-banner a.button:hover {
+  background-color: var(--accent-hover-color);
+  border-color: var(--accent-hover-color);
+}
+
+/* Dark background: orange buttons */
+.dark .cta-banner a.button:any-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.dark .cta-banner a.button:hover {
+  background-color: var(--accent-hover-color);
+  border-color: var(--accent-hover-color);
+}
+
+/* Light / beige background: default orange buttons (no override needed) */
+
+/* ---- Container: full-bleed ----
+   Placed after block rules to satisfy no-descending-specificity */
+main > .section.cta-banner-container {
+  margin: 0;
+  padding: 0;
+}
+
+main > .section.cta-banner-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* ---- Responsive: desktop ---- */
+@media (width >= 900px) {
+  .cta-banner {
+    padding: var(--spacing-xl) 32px;
+  }
+
+  .cta-banner-dual > div {
+    flex-direction: row;
+    gap: var(--spacing-l);
+  }
+
+  .cta-banner-column + .cta-banner-column {
+    border-top: none;
+    border-left: 1px solid rgb(0 0 0 / 15%);
+    padding-top: var(--spacing-m);
+    padding-left: var(--spacing-l);
+  }
+}

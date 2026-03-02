@@ -32,27 +32,7 @@
   margin-bottom: 12px;
 }
 
-/* Button links within columns */
-.columns p a {
-  display: inline-block;
-  padding: var(--button-padding);
-  font-family: var(--button-font-family);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  letter-spacing: var(--button-letter-spacing);
-  text-transform: var(--button-text-transform);
-  text-decoration: none;
-  line-height: 1;
-  border: 2px solid var(--accent-color);
-  background-color: var(--accent-color);
-  color: var(--text-color);
-  transition: var(--button-transition);
-}
-
-.columns p a:hover {
-  background-color: var(--accent-hover-color);
-  border-color: var(--accent-hover-color);
-}
+/* Button links: styled by global a.button:any-link via decorateButtons() */
 
 @media (width >= 900px) {
   .columns > div {
@@ -75,10 +55,9 @@
 }
 
 /* ============================================================
-   Hero CTA variant — columns directly after hero
-   The original site integrates an orange CTA section within
-   the hero. In EDS this is a separate columns block, so we
-   style it to visually connect with the hero above.
+   Hero CTA variant — columns directly after hero (LEGACY)
+   Used by the homepage. New pages should use the cta-banner
+   block instead. Can be removed once homepage is migrated.
    ============================================================ */
 
 /* Wrapper: full-width orange CTA bar matching original layout */
@@ -117,7 +96,7 @@ main > .section.hero-container + .section.columns-container .columns {
   text-transform: none;
 }
 
-.hero-container + .columns-container > .columns-wrapper .columns p a {
+.hero-container + .columns-container > .columns-wrapper .columns a.button:any-link {
   background-color: var(--white);
   border-color: var(--white);
   color: var(--text-color);
@@ -125,7 +104,7 @@ main > .section.hero-container + .section.columns-container .columns {
   text-align: center;
 }
 
-.hero-container + .columns-container > .columns-wrapper .columns p a:hover {
+.hero-container + .columns-container > .columns-wrapper .columns a.button:hover {
   background-color: var(--background-color);
   border-color: var(--background-color);
 }

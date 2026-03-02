@@ -1,8 +1,26 @@
+function getYouTubeId(url) {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
 export default function decorate(block) {
   const section = block.closest('.section');
   if (!section || !section.classList.contains('campaign')) return;
 
   block.classList.add('hero-campaign');
+
+  // Find and extract video link from content
+  let videoUrl = '';
+  const links = block.querySelectorAll('a');
+  links.forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    if (href.includes('youtube.com/watch') || href.includes('youtu.be/')) {
+      videoUrl = href;
+      // Remove the video link from visible content
+      const parentP = link.closest('p');
+      if (parentP) parentP.remove();
+    }
+  });
 
   // Create play button
   const playBtn = document.createElement('button');
@@ -34,23 +52,47 @@ export default function decorate(block) {
     closeBtn.className = 'hero-video-modal-close';
     closeBtn.setAttribute('aria-label', 'Close video');
     closeBtn.textContent = '\u00D7';
-    closeBtn.addEventListener('click', () => modal.remove());
 
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'hero-video-wrapper';
-    videoWrapper.textContent = 'Video content';
+
+    const videoId = getYouTubeId(videoUrl);
+    if (videoId) {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+      videoWrapper.appendChild(iframe);
+
+      // "Watch on YouTube" fallback link for embed-restricted videos (error 150/153)
+      const fallback = document.createElement('a');
+      fallback.href = videoUrl;
+      fallback.target = '_blank';
+      fallback.rel = 'noopener noreferrer';
+      fallback.className = 'hero-video-fallback';
+      fallback.textContent = 'Watch on YouTube';
+      videoWrapper.appendChild(fallback);
+    }
+
+    const removeModal = () => {
+      modal.remove();
+    };
+
+    closeBtn.addEventListener('click', removeModal);
 
     modalInner.appendChild(closeBtn);
     modalInner.appendChild(videoWrapper);
     modal.appendChild(modalInner);
 
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.remove();
+      if (e.target === modal) removeModal();
     });
 
     document.addEventListener('keydown', function handler(e) {
       if (e.key === 'Escape') {
-        modal.remove();
+        removeModal();
         document.removeEventListener('keydown', handler);
       }
     });

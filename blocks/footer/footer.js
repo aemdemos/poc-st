@@ -72,14 +72,21 @@ export default async function decorate(block) {
     const socialList = section2.querySelector('ul');
     if (socialList) {
       socialList.className = 'footer-social';
-      socialList.querySelectorAll('li a').forEach((link) => {
+      socialList.querySelectorAll('li').forEach((li) => {
+        const link = li.querySelector('a');
+        if (!link) return;
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noreferrer');
         // extract icon and text, restructure for visual display
         const iconSpan = link.querySelector('.icon');
         const iconPicture = link.querySelector('picture');
         const iconEl = iconSpan || iconPicture;
-        const textContent = link.textContent.trim();
+        // collect label text from link or sibling <p> elements
+        let textContent = link.textContent.trim();
+        if (!textContent) {
+          const textP = [...li.querySelectorAll('p')].find((p) => !p.querySelector('a') && p.textContent.trim());
+          if (textP) textContent = textP.textContent.trim();
+        }
         if (iconEl) {
           link.textContent = '';
           link.append(iconEl);
@@ -89,6 +96,9 @@ export default async function decorate(block) {
           link.append(label);
           link.setAttribute('aria-label', textContent);
         }
+        // remove any remaining <p> wrappers, keep only the bare link
+        li.textContent = '';
+        li.append(link);
       });
     }
   }

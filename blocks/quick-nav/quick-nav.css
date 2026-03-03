@@ -42,20 +42,21 @@ main .section.quick-nav-container > div {
 /* ---- Link list ---- */
 .quick-nav ul {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--spacing-s);
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .quick-nav li {
   position: relative;
-  padding-left: 32px;
-  padding-right: var(--spacing-s);
-  margin-bottom: var(--spacing-xs);
-  border-right: 1px solid var(--olive-accent);
+  padding-left: 36px;
+  padding-right: 0;
+  margin-bottom: 0;
+  border-right: none;
 }
 
 .quick-nav li:last-child {
@@ -63,23 +64,51 @@ main .section.quick-nav-container > div {
   padding-right: 0;
 }
 
-/* Chevron bullet */
+/* Circle chevron bullet — olive filled circle with chevron inside */
 .quick-nav li::before {
   content: '';
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: var(--olive-accent);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
-  mask-size: contain;
-  mask-repeat: no-repeat;
   border-radius: 50%;
+  mask-image: none;
+}
+
+/* Chevron arrow inside the circle */
+.quick-nav li::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2.5px solid var(--white);
+  border-bottom: 2.5px solid var(--white);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Tablet+: horizontal wrap with dividers */
+@media (width >= 600px) {
+  .quick-nav ul {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+  .quick-nav li {
+    padding-right: var(--spacing-s);
+    border-right: 1px solid var(--olive-accent);
+  }
+
+  .quick-nav li:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
 }
 
 /* ---- Links ---- */

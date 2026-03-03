@@ -66,7 +66,7 @@
 }
 
 /* ---- Button: outlined white on dark ---- */
-.promo-banner-text a.button:any-link {
+.promo-banner-text a:any-link {
   background-color: transparent;
   border: 2px solid var(--white);
   color: var(--white);
@@ -80,9 +80,10 @@
   display: inline-block;
   min-width: min(330px, 100%);
   transition: var(--button-transition);
+  text-decoration: none;
 }
 
-.promo-banner-text a.button:hover {
+.promo-banner-text a:hover {
   background-color: var(--white);
   color: var(--dark-color);
 }

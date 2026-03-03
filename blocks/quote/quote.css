@@ -87,7 +87,7 @@ main .section.beige.quote-container .quote blockquote::before {
 main .section.olive.quote-container .quote blockquote .quote-quotation,
 main .section.beige.quote-container .quote blockquote .quote-quotation {
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-s);
+  font-size: 42px;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
@@ -128,7 +128,7 @@ main .section.beige.quote-container::after {
 
   main .section.olive.quote-container .quote blockquote .quote-quotation,
   main .section.beige.quote-container .quote blockquote .quote-quotation {
-    font-size: var(--heading-font-size-l);
+    font-size: 54px;
   }
 }
 
@@ -153,6 +153,6 @@ main .section.beige.quote-container::after {
   main .section.olive.quote-container .quote blockquote .quote-quotation,
   main .section.beige.quote-container .quote blockquote .quote-quotation {
     font-size: var(--heading-font-size-xl);
-    max-width: 480px;
+    max-width: 520px;
   }
 }

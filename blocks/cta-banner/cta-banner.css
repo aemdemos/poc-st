@@ -97,6 +97,11 @@
 
 /* Light / beige background: default orange buttons (no override needed) */
 
+/* Accent variant: extra top padding, less bottom, matching original */
+.accent .cta-banner {
+  padding: 80px 24px 30px;
+}
+
 /* ---- Container: full-bleed ----
    Placed after block rules to satisfy no-descending-specificity */
 main > .section.cta-banner-container {
@@ -113,6 +118,10 @@ main > .section.cta-banner-container > div {
 @media (width >= 900px) {
   .cta-banner {
     padding: var(--spacing-xl) 32px;
+  }
+
+  .accent .cta-banner {
+    padding: 80px 50px 30px;
   }
 
   .cta-banner-dual > div {

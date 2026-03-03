@@ -90,8 +90,18 @@ function renderResult(result, searchTerms, titleTag) {
   if (result.image) {
     const wrapper = document.createElement('div');
     wrapper.className = 'search-result-image';
-    const pic = createOptimizedPicture(result.image, '', false, [{ width: '375' }]);
-    wrapper.append(pic);
+    const isExternal = result.image && !result.image.startsWith(window.location.origin);
+    if (!isExternal) {
+      const pic = createOptimizedPicture(result.image, '', false, [{ width: '375' }]);
+      wrapper.append(pic);
+    } else {
+      const pic = document.createElement('picture');
+      const img = document.createElement('img');
+      img.src = result.image;
+      img.loading = 'lazy';
+      pic.append(img);
+      wrapper.append(pic);
+    }
     a.append(wrapper);
   }
   if (result.title) {

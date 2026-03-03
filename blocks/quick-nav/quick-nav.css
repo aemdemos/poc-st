@@ -1,0 +1,109 @@
+/*
+ * Quick Nav Block
+ *
+ * Horizontal in-section link bar. Heading + wrapped list of page links
+ * with chevron bullet icons. Used on section landing pages.
+ */
+
+/* ---- Container: full-bleed section ---- */
+main .section.quick-nav-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.quick-nav-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* ---- Block base ---- */
+.quick-nav {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-m) var(--spacing-m) 0;
+  text-align: center;
+}
+
+.quick-nav nav {
+  display: contents;
+}
+
+/* ---- Heading ---- */
+.quick-nav h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-s);
+}
+
+/* ---- Link list ---- */
+.quick-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-s);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-nav li {
+  position: relative;
+  padding-left: 32px;
+  padding-right: var(--spacing-s);
+  margin-bottom: var(--spacing-xs);
+  border-right: 1px solid var(--olive-accent);
+}
+
+.quick-nav li:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* Chevron bullet */
+.quick-nav li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--olive-accent);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+/* ---- Links ---- */
+.quick-nav a:any-link {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.quick-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Responsive: desktop ---- */
+@media (width >= 900px) {
+  .quick-nav {
+    padding: var(--spacing-l) 32px 0;
+  }
+
+  .quick-nav li {
+    padding-left: 36px;
+    padding-right: var(--spacing-m);
+    margin-bottom: var(--spacing-s);
+  }
+}

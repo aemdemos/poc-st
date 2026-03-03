@@ -1,305 +1,390 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template 2: Section Landing Pages - Migration Sub-Task Plan</title>
-  <style>
-    :root {
-      --dark: #15171a;
-      --orange: #ff661c;
-      --green: #4a7c59;
-      --grey-bg: #f5f5f5;
-      --border: #ddd;
-      --text: #333;
-      --text-light: #666;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-      background: #fff;
-    }
-    h1 {
-      font-size: 28px;
-      color: var(--dark);
-      border-bottom: 3px solid var(--orange);
-      padding-bottom: 12px;
-      margin-bottom: 32px;
-    }
-    h1 small { font-size: 16px; color: #666; font-weight: 400; }
-    h2 {
-      font-size: 22px;
-      color: var(--dark);
-      margin-top: 40px;
-      margin-bottom: 16px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-    h3 {
-      font-size: 17px;
-      color: var(--dark);
-      margin-top: 28px;
-      margin-bottom: 12px;
-    }
-    p, li { font-size: 14px; margin-bottom: 8px; }
-    ul { padding-left: 20px; margin-bottom: 16px; }
-    ol { padding-left: 20px; }
-    strong { color: var(--dark); }
-    code {
-      background: var(--grey-bg);
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 13px;
-      color: var(--orange);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 24px;
-      font-size: 13px;
-    }
-    th {
-      background: var(--dark);
-      color: #fff;
-      text-align: left;
-      padding: 10px 12px;
-      font-weight: 600;
-    }
-    td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    tr:nth-child(even) td { background: var(--grey-bg); }
-    .badge {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    .todo { background: #fff3e0; color: #e65100; }
-    .done { background: #e8f5e9; color: #2e7d32; }
-    .p1 { background: #fff3e0; color: #e65100; font-weight: 700; }
-    .p2 { background: #fff8e1; color: #f9a825; font-weight: 700; }
-    .p3 { background: #f3e5f5; color: #7b1fa2; font-weight: 700; }
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 32px 0;
-    }
-    .phase {
-      display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      padding: 3px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .note {
-      background: #fff8e1;
-      border-left: 4px solid var(--orange);
-      padding: 12px 16px;
-      margin: 16px 0;
-      font-size: 13px;
-      border-radius: 0 4px 4px 0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 16px 0;
-    }
-    .card {
-      background: var(--grey-bg);
-      padding: 16px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-    .card h4 { font-size: 14px; margin-bottom: 8px; color: var(--dark); }
-    .card ul { margin-bottom: 0; }
-    .footer-note {
-      margin-top: 48px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--text-light);
-      font-style: italic;
-    }
-    @media print {
-      body { padding: 20px; max-width: 100%; }
-      table { page-break-inside: avoid; }
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>
 </head>
 <body>
+<header></header>
+<main>
+<div><h1 id="template-2-section-landing-pages--migration-sub-task-plan">Template 2: Section Landing Pages — Migration Sub-Task Plan</h1><h2 id="overview">Overview</h2><p><strong>Template:</strong> Section Landing Pages (Template 2)
+<strong>Pages (3):</strong></p><ul>
+<li><code>/regular-army/</code></li>
+<li><code>/army-reserve/</code></li>
+<li><code>/how-to-join/</code></li>
+</ul><p><strong>Shared Layout Pattern:</strong></p><ul>
+<li>Full-width hero with heading + CTA(s)</li>
+<li>Quick-nav link bar (in-section navigation)</li>
+<li>Mix of carousels, card grids, quote banners</li>
+<li>Promo/marketing content sections</li>
+<li>Full-width CTA banner at bottom</li>
+</ul><p><strong>Key Variations:</strong></p>
 
-<h1>Template 2: Section Landing Pages<br><small>Migration Sub-Task Plan</small></h1>
 
-<h2>Overview</h2>
 
-<p><strong>Template:</strong> Section Landing Pages (Template 2)<br>
-<strong>Pages:</strong> 3 pages<br>
-<strong>URLs:</strong> <code>/regular-army/</code> &middot; <code>/army-reserve/</code> &middot; <code>/how-to-join/</code></p>
 
-<div class="grid">
-  <div class="card">
-    <h4>Shared Layout Pattern</h4>
-    <ul>
-      <li>Full-width hero with heading + CTA(s)</li>
-      <li>Quick-nav link bar (in-section navigation)</li>
-      <li>Mix of carousels, card grids, quote banners</li>
-      <li>Promo/marketing content sections</li>
-      <li>Full-width CTA banner at bottom</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h4>Migration Approach</h4>
-    <p>Flexible composable template with ~70% shared component vocabulary. Three pages with increasing complexity, migrated in order from simplest to most complex.</p>
-  </div>
-</div>
 
-<h3>Key Variations by Page</h3>
-<table>
-  <tr><th>Page</th><th>Unique Elements</th></tr>
-  <tr><td><strong>Regular Army</strong></td><td>Tabbed content (Soldiers/Officers), quiz widget, 2 quote banners</td></tr>
-  <tr><td><strong>Army Reserve</strong></td><td>Video hero, parallax cards, interactive map, multiple carousels, &ldquo;Ways to Join&rdquo; slider</td></tr>
-  <tr><td><strong>How to Join</strong></td><td>Dual-CTA hero, 2-column text+image block, &ldquo;What to Expect&rdquo; cards</td></tr>
-</table>
 
-<hr>
 
-<h2>Block Inventory</h2>
 
-<h3>Existing Blocks (ready to reuse)</h3>
-<table>
-  <tr><th>Block</th><th>Status</th><th>Notes</th></tr>
-  <tr><td>hero</td><td><span class="badge done">Built</span></td><td>Supports default, campaign (video modal), events variants</td></tr>
-  <tr><td>carousel</td><td><span class="badge done">Built</span></td><td>Sliding content with prev/next navigation</td></tr>
-  <tr><td>cards</td><td><span class="badge done">Built</span></td><td>Standard card layout with image + text</td></tr>
-  <tr><td>quote</td><td><span class="badge done">Built</span></td><td>Pull-quote / testimonial block</td></tr>
-  <tr><td>tabs</td><td><span class="badge done">Built</span></td><td>Tabbed content panels</td></tr>
-  <tr><td>columns</td><td><span class="badge done">Built</span></td><td>Multi-column layout</td></tr>
-  <tr><td>embed</td><td><span class="badge done">Built</span></td><td>YouTube video embed</td></tr>
-  <tr><td>video</td><td><span class="badge done">Built</span></td><td>Video player with placeholder image</td></tr>
-</table>
 
-<h3>New Blocks Required</h3>
-<table>
-  <tr><th>Block</th><th>Priority</th><th>Used On</th><th>Description</th></tr>
-  <tr><td><code>cta-banner</code></td><td><span class="badge p1">P1</span></td><td>All 3 pages + ~20 others site-wide</td><td>Full-width colored CTA with heading + button; variants: orange, green, black</td></tr>
-  <tr><td><code>quick-nav</code></td><td><span class="badge p2">P2</span></td><td>All 3 landing pages</td><td>Horizontal in-section link bar</td></tr>
-  <tr><td><code>promo-banner</code></td><td><span class="badge p2">P2</span></td><td>~5 pages</td><td>Image/GIF + text + CTA horizontal layout</td></tr>
-  <tr><td><code>parallax-cards</code></td><td><span class="badge p3">P3</span></td><td>Army Reserve only</td><td>Vertical stacked cards with scroll effect</td></tr>
-  <tr><td><code>map</code></td><td><span class="badge p3">P3</span></td><td>Army Reserve only</td><td>Embedded interactive map with location markers</td></tr>
-  <tr><td><code>quiz-widget</code></td><td><span class="badge p3">P3</span></td><td>Regular Army only</td><td>Interactive questionnaire</td></tr>
-</table>
 
-<hr>
 
-<h2>Sub-Tasks</h2>
 
-<h3><span class="phase">Phase A</span> Reconnaissance (All 3 Pages)</h3>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>A1</td><td>Analyse <code>/regular-army/</code></td><td>Scrape &amp; screenshot the page. Identify all sections, blocks, and unique elements.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>A2</td><td>Analyse <code>/army-reserve/</code></td><td>Scrape &amp; screenshot the page. Identify all sections, blocks, and unique elements.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>A3</td><td>Analyse <code>/how-to-join/</code></td><td>Scrape &amp; screenshot the page. Identify all sections, blocks, and unique elements.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>A4</td><td>Consolidated block mapping</td><td>Produce a mapping of which source sections map to which EDS blocks (existing vs. new). Confirm block variants needed.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<h3><span class="phase">Phase B</span> New Block Development (Shared Blocks First)</h3>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>B1</td><td>Build <code>cta-banner</code> block</td><td>JS + CSS. Full-width colored CTA with heading + button. Variants: orange, green, black.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>B2</td><td>Build <code>quick-nav</code> block</td><td>JS + CSS. Horizontal in-section link bar for landing page navigation.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>B3</td><td>Build <code>promo-banner</code> block</td><td>JS + CSS. Image/GIF + text + CTA horizontal layout.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<h3><span class="phase">Phase C</span> Migrate Page 1 &mdash; <code>/how-to-join/</code></h3>
-<div class="note">Simplest of the three. Establishes shared patterns for hero, quick-nav, and cta-banner.</div>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>C1</td><td>Migrate content</td><td>Extract content from source page and author EDS markdown with block tables.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>C2</td><td>Convert &amp; preview</td><td>Convert markdown to HTML. Preview locally and iterate on content accuracy.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>C3</td><td>Visual QA</td><td>Compare rendered page against original. Refine CSS and block styling.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<h3><span class="phase">Phase D</span> Migrate Page 2 &mdash; <code>/regular-army/</code></h3>
-<div class="note">Adds tabbed content (Soldiers/Officers) and quiz widget complexity.</div>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>D1</td><td>Migrate content</td><td>Extract content from source page and author EDS markdown.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>D2</td><td>Build additional variants</td><td>Create any new block variants needed (e.g., tabbed content for Soldiers/Officers switcher).</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>D3</td><td>Convert &amp; preview</td><td>Convert markdown to HTML. Preview locally and iterate.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>D4</td><td>Visual QA</td><td>Compare against original. Refine CSS and block styling.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<h3><span class="phase">Phase E</span> Migrate Page 3 &mdash; <code>/army-reserve/</code></h3>
-<div class="note">Most complex page &mdash; video hero, parallax cards, interactive map, multiple carousels.</div>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>E1</td><td>Migrate content</td><td>Extract content from source page and author EDS markdown.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>E2</td><td>Build <code>parallax-cards</code> block</td><td>P3 &mdash; can be simplified to stacked cards if full parallax effect is not required.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>E3</td><td>Handle interactive map</td><td>P3 &mdash; may simplify to static image + link, or build a basic map embed.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>E4</td><td>Convert &amp; preview</td><td>Convert markdown to HTML. Preview locally and iterate.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>E5</td><td>Visual QA</td><td>Compare against original. Refine CSS and block styling.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<h3><span class="phase">Phase F</span> Cross-Page QA</h3>
-<table>
-  <tr><th>#</th><th>Task</th><th>Description</th><th>Status</th></tr>
-  <tr><td>F1</td><td>Cross-page consistency</td><td>Verify shared blocks (hero, quick-nav, cta-banner) render consistently across all 3 pages.</td><td><span class="badge todo">To Do</span></td></tr>
-  <tr><td>F2</td><td>Responsive testing</td><td>Test all 3 pages at mobile, tablet, and desktop breakpoints.</td><td><span class="badge todo">To Do</span></td></tr>
-</table>
 
-<hr>
 
-<h2>Execution Order Rationale</h2>
-<ol>
-  <li style="margin-bottom:8px;"><strong>Start with <code>/how-to-join/</code></strong> &mdash; Fewest unique elements. Validates shared patterns (hero, quick-nav, cta-banner) before tackling more complex pages.</li>
-  <li style="margin-bottom:8px;"><strong>Then <code>/regular-army/</code></strong> &mdash; Adds tabs and quiz widget. Moderate complexity increase.</li>
-  <li style="margin-bottom:8px;"><strong>Finish with <code>/army-reserve/</code></strong> &mdash; Most complex (video hero, parallax cards, interactive map, multiple carousels). Benefits from all shared blocks and patterns established earlier.</li>
-</ol>
 
-<div class="note"><strong>P3 blocks</strong> (parallax-cards, map, quiz-widget) can be simplified or deferred &mdash; decision will be made during each page&rsquo;s migration based on effort vs. fidelity trade-off.</div>
+<div class="page"><div><div>Regular Army</div><div>Tabbed content (Soldiers/Officers), quiz widget, 2 quote banners</div></div><div><div>Army Reserve</div><div>Video hero, parallax cards, interactive map, multiple carousels, "Ways to Join" slider</div></div><div><div>How to Join</div><div>Dual-CTA hero, 2-column text+image block, "What to Expect" cards</div></div></div><p><strong>Migration approach:</strong> Flexible composable template. ~70% shared component vocabulary.</p></div>
+<div><h2 id="block-inventory">Block Inventory</h2><h3 id="existing-blocks-ready-to-reuse">Existing Blocks (ready to reuse)</h3>
 
-<hr>
 
-<h2>Dependencies</h2>
-<table>
-  <tr><th>Dependency</th><th>Status</th></tr>
-  <tr><td>Phase 1 Foundation (global styles, design tokens, header, footer)</td><td><span class="badge done">Done</span></td></tr>
-  <tr><td>P0 blocks (hero, cards, columns, embed)</td><td><span class="badge done">Built</span></td></tr>
-  <tr><td>P1 blocks (carousel, quote, tabs)</td><td><span class="badge done">Built</span></td></tr>
-  <tr><td>New blocks (cta-banner, quick-nav, promo-banner)</td><td><span class="badge todo">Phase B</span></td></tr>
-</table>
 
-<hr>
 
-<h2>Risk Factors</h2>
-<table>
-  <tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr>
-  <tr><td>Quiz widget requires custom JS + external API</td><td>High complexity for 1 page</td><td>Defer to P3; may use simplified static version</td></tr>
-  <tr><td>Interactive map requires mapping service</td><td>External dependency</td><td>Consider static image + link as fallback</td></tr>
-  <tr><td>Parallax scroll effect</td><td>Complex CSS/JS for 1 page</td><td>Simplify to stacked cards layout</td></tr>
-  <tr><td>Video hero on Army Reserve</td><td>Needs video embed in hero context</td><td>May need hero variant with video background</td></tr>
-  <tr><td>Multiple carousel instances on single page</td><td>Performance concern</td><td>Ensure lazy initialization; test scroll performance</td></tr>
-</table>
 
-<div class="footer-note">
-  Document generated as part of the British Army Jobs Site migration project.<br>
-  Reference: Template 2 of 9 identified templates (see site-migration-plan.md for full plan).
-</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="block"><div><div>hero</div><div>Built</div><div>Supports default, campaign (video modal), events variants</div></div><div><div>carousel</div><div>Built</div><div>Sliding content with prev/next navigation</div></div><div><div>cards</div><div>Built</div><div>Standard card layout with image + text</div></div><div><div>quote</div><div>Built</div><div>Pull-quote / testimonial block</div></div><div><div>tabs</div><div>Built</div><div>Tabbed content panels</div></div><div><div>columns</div><div>Built</div><div>Multi-column layout</div></div><div><div>embed</div><div>Built</div><div>YouTube video embed</div></div><div><div>video</div><div>Built</div><div>Video player with placeholder image</div></div></div><h3 id="new-blocks-required">New Blocks Required</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="block"><div><div><code>cta-banner</code></div><div>P1</div><div>All 3 pages + ~20 others site-wide</div><div>Full-width colored CTA with heading + button; variants: orange, green, black</div></div><div><div><code>quick-nav</code></div><div>P2</div><div>All 3 landing pages</div><div>Horizontal in-section link bar</div></div><div><div><code>promo-banner</code></div><div>P2</div><div>~5 pages</div><div>Image/GIF + text + CTA horizontal layout</div></div><div><div><code>parallax-cards</code></div><div>P3</div><div>Army Reserve only</div><div>Vertical stacked cards with scroll effect</div></div><div><div><code>map</code></div><div>P3</div><div>Army Reserve only</div><div>Embedded interactive map with location markers</div></div><div><div><code>quiz-widget</code></div><div>P3</div><div>Regular Army only</div><div>Interactive questionnaire</div></div></div></div>
+<div><h2 id="sub-tasks">Sub-Tasks</h2><h3 id="phase-a-reconnaissance-all-3-pages">Phase A: Reconnaissance (All 3 Pages)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>A1</div><div>Analyse <code>/regular-army/</code></div><div>Scrape &#x26; screenshot the page. Identify all sections, blocks, and unique elements.</div><div>✅ Done</div></div><div><div>A2</div><div>Analyse <code>/army-reserve/</code></div><div>Scrape &#x26; screenshot the page. Identify all sections, blocks, and unique elements.</div><div>✅ Done</div></div><div><div>A3</div><div>Analyse <code>/how-to-join/</code></div><div>Scrape &#x26; screenshot the page. Identify all sections, blocks, and unique elements.</div><div>✅ Done</div></div><div><div>A4</div><div>Consolidated block mapping</div><div>Produce a mapping of which source sections map to which EDS blocks (existing vs. new). Confirm block variants needed.</div><div>✅ Done</div></div></div><h3 id="phase-b-new-block-development-shared-blocks-first">Phase B: New Block Development (Shared Blocks First)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>B1</div><div>Build <code>cta-banner</code> block</div><div>JS + CSS. Full-width colored CTA with heading + button. Variants: orange, green, black.</div><div>✅ Done (already built)</div></div><div><div>B2</div><div>Build <code>quick-nav</code> block</div><div>JS + CSS. Horizontal in-section link bar for landing page navigation.</div><div>✅ Done</div></div><div><div>B3</div><div>Build <code>promo-banner</code> block</div><div>JS + CSS. Image/GIF + text + CTA horizontal layout.</div><div>✅ Done</div></div></div><h3 id="phase-c-migrate-page-1--how-to-join">Phase C: Migrate Page 1 — <code>/how-to-join/</code></h3><p><em>Simplest of the three. Establishes shared patterns for hero, quick-nav, and cta-banner.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>C1</div><div>Migrate content</div><div>Extract content from source page and author EDS markdown with block tables.</div><div>✅ Done</div></div><div><div>C2</div><div>Convert &#x26; preview</div><div>Convert markdown to HTML. Preview locally and iterate on content accuracy.</div><div>✅ Done</div></div><div><div>C3</div><div>Visual QA</div><div>Compare rendered page against original. Refine CSS and block styling.</div><div>✅ Done</div></div></div><h3 id="phase-d-migrate-page-2--regular-army">Phase D: Migrate Page 2 — <code>/regular-army/</code></h3><p><em>Adds tabbed content (Soldiers/Officers) and quiz widget complexity.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>D1</div><div>Migrate content</div><div>Extract content from source page and author EDS markdown.</div><div>To Do</div></div><div><div>D2</div><div>Build additional variants</div><div>Create any new block variants needed (e.g., tabbed content for Soldiers/Officers switcher).</div><div>To Do</div></div><div><div>D3</div><div>Convert &#x26; preview</div><div>Convert markdown to HTML. Preview locally and iterate.</div><div>To Do</div></div><div><div>D4</div><div>Visual QA</div><div>Compare against original. Refine CSS and block styling.</div><div>To Do</div></div></div><h3 id="phase-e-migrate-page-3--army-reserve">Phase E: Migrate Page 3 — <code>/army-reserve/</code></h3><p><em>Most complex page — video hero, parallax cards, interactive map, multiple carousels.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>E1</div><div>Migrate content</div><div>Extract content from source page and author EDS markdown.</div><div>To Do</div></div><div><div>E2</div><div>Build <code>parallax-cards</code> block</div><div>P3 — can be simplified to stacked cards if full parallax effect is not required.</div><div>To Do</div></div><div><div>E3</div><div>Handle interactive map</div><div>P3 — may simplify to static image + link, or build a basic map embed.</div><div>To Do</div></div><div><div>E4</div><div>Convert &#x26; preview</div><div>Convert markdown to HTML. Preview locally and iterate.</div><div>To Do</div></div><div><div>E5</div><div>Visual QA</div><div>Compare against original. Refine CSS and block styling.</div><div>To Do</div></div></div><h3 id="phase-f-cross-page-qa">Phase F: Cross-Page QA</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>F1</div><div>Cross-page consistency</div><div>Verify shared blocks (hero, quick-nav, cta-banner) render consistently across all 3 pages.</div><div>To Do</div></div><div><div>F2</div><div>Responsive testing</div><div>Test all 3 pages at mobile, tablet, and desktop breakpoints.</div><div>To Do</div></div></div></div>
+<div><h2 id="execution-order-rationale">Execution Order Rationale</h2><ol>
+<li><strong>Start with <code>/how-to-join/</code></strong> — Fewest unique elements. Validates shared patterns (hero, quick-nav, cta-banner) before tackling more complex pages.</li>
+<li><strong>Then <code>/regular-army/</code></strong> — Adds tabs and quiz widget. Moderate complexity increase.</li>
+<li><strong>Finish with <code>/army-reserve/</code></strong> — Most complex (video hero, parallax cards, interactive map, multiple carousels). Benefits from all shared blocks and patterns established earlier.</li>
+</ol><p><strong>P3 blocks</strong> (parallax-cards, map, quiz-widget) can be simplified or deferred — decision will be made during each page's migration based on effort vs. fidelity trade-off.</p></div>
+<div><h2 id="dependencies">Dependencies</h2><ul>
+<li><strong>Phase 1 (Foundation)</strong> must be complete: global styles, design tokens, header, footer — ✅ Done</li>
+<li><strong>P0 blocks</strong> (hero, cards, columns, embed) — ✅ Already built</li>
+<li><strong>P1 blocks</strong> (carousel, quote, tabs) — ✅ Already built</li>
+<li><strong>New blocks</strong> (cta-banner, quick-nav, promo-banner) — Built in Phase B before page migrations</li>
+</ul></div>
+<div><h2 id="risk-factors">Risk Factors</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="risk"><div><div>Quiz widget requires custom JS + external API</div><div>High complexity for 1 page</div><div>Defer to P3; may use simplified static version</div></div><div><div>Interactive map requires mapping service</div><div>External dependency</div><div>Consider static image + link as fallback</div></div><div><div>Parallax scroll effect</div><div>Complex CSS/JS for 1 page</div><div>Simplify to stacked cards layout</div></div><div><div>Video hero on Army Reserve</div><div>Needs video embed in hero context</div><div>May need hero variant with video background</div></div><div><div>Multiple carousel instances on single page</div><div>Performance concern</div><div>Ensure lazy initialization; test scroll performance</div></div></div></div>
+<div><p><em>Document generated as part of the British Army Jobs Site migration project.</em>
+<em>Reference: Template 2 of 9 identified templates (see site-migration-plan.md for full plan).</em></p></div>
+</main>
+<footer></footer>
 </body>
 </html>

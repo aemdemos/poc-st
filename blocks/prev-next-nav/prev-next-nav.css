@@ -1,0 +1,88 @@
+/* Prev-Next Navigation Block
+ *
+ * Horizontal bar with previous/next sibling page links.
+ * Used on content sub-pages (~45 pages).
+ */
+
+.prev-next-nav {
+  border-top: 1px solid rgb(0 0 0 / 10%);
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+  padding: 0;
+}
+
+.prev-next-nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: 80px;
+}
+
+/* Shared link styling */
+.prev-next-nav-links a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-s) var(--spacing-m);
+  text-decoration: none;
+  color: var(--text-color);
+  flex: 1;
+  transition: background-color 0.2s ease;
+}
+
+.prev-next-nav-links a:hover {
+  background-color: var(--light-color);
+}
+
+/* Previous link: left-aligned */
+.prev-next-nav-prev {
+  align-items: flex-start;
+  border-right: 1px solid rgb(0 0 0 / 10%);
+}
+
+/* Next link: right-aligned */
+.prev-next-nav-next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Label ("Previous" / "Next") */
+.prev-next-nav-label {
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  margin-bottom: 4px;
+}
+
+/* Page title */
+.prev-next-nav-title {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xs);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text-color);
+}
+
+/* Spacer for when only one direction exists */
+.prev-next-nav-spacer {
+  flex: 1;
+}
+
+/* Responsive: stack on small screens */
+@media (width < 600px) {
+  .prev-next-nav-links {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .prev-next-nav-prev {
+    border-right: none;
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+  }
+
+  .prev-next-nav-next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

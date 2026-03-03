@@ -25,3 +25,104 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* ============================================================
+   Variant: Role Cards (.cards.role)
+   Used on role listing pages, role category pages.
+   Shows: image + corps badge + title + salary range + CTA.
+   ============================================================ */
+.cards.role > ul {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.cards.role > ul > li {
+  border: none;
+  border-radius: var(--card-border-radius);
+  background-color: var(--dark-color);
+  color: var(--white);
+  overflow: hidden;
+  position: relative;
+}
+
+.cards.role > ul > li img {
+  aspect-ratio: 16 / 10;
+}
+
+.cards.role .cards-card-body {
+  padding: var(--spacing-s);
+  margin: 0;
+}
+
+.cards.role .cards-card-body h3,
+.cards.role .cards-card-body h4 {
+  color: var(--white);
+  font-size: var(--heading-font-size-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cards.role .cards-card-body p {
+  font-size: var(--body-font-size-xs);
+  color: rgb(255 255 255 / 70%);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cards.role .cards-card-body a.button:any-link {
+  font-size: 16px;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================================
+   Variant: Article Cards (.cards.article)
+   Used on blog listing, related articles grid.
+   Shows: image + headline + teaser + optional duration badge.
+   ============================================================ */
+.cards.article > ul {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.cards.article > ul > li {
+  border: none;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.cards.article > ul > li img {
+  aspect-ratio: 16 / 9;
+}
+
+.cards.article .cards-card-body {
+  padding: var(--spacing-s);
+  margin: 0;
+}
+
+.cards.article .cards-card-body h3,
+.cards.article .cards-card-body h4 {
+  font-size: var(--heading-font-size-xs);
+  margin-bottom: var(--spacing-xs);
+  text-transform: none;
+  font-family: var(--body-font-family);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cards.article .cards-card-body p {
+  font-size: var(--body-font-size-xs);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Duration badge (e.g. "2 min read") — authored as <em> */
+.cards.article .cards-card-body em {
+  font-style: normal;
+  font-size: 14px;
+  color: rgb(0 0 0 / 50%);
+  display: inline-block;
+  background-color: var(--light-color);
+  padding: 4px 10px;
+  border-radius: 12px;
+}

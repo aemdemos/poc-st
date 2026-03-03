@@ -8,6 +8,7 @@
   --background-color: #e5e2da;
   --light-color: #f7f7f7;
   --dark-color: #15171a;
+  --dark-green: #154228;
   --text-color: #15171a;
   --link-color: #15171a;
   --link-hover-color: #15171a;
@@ -48,6 +49,11 @@
   --spacing-l: 40px;
   --spacing-xl: 60px;
   --spacing-xxl: 80px;
+
+  /* layout */
+  --content-max-width: 1200px;
+  --section-spacing: 40px;
+  --card-border-radius: 0 0 30px 30px;
 
   /* buttons */
   --button-font-family: var(--heading-font-family);
@@ -295,11 +301,11 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: var(--section-spacing) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
   padding: 0 24px;
 }
@@ -312,6 +318,17 @@ main > .section:first-of-type {
   main > .section > div {
     padding: 0 32px;
   }
+}
+
+/* section metadata — full-bleed (break out of max-width container) */
+main .section.full-bleed {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.full-bleed > div {
+  max-width: none;
+  padding: 0;
 }
 
 /* section metadata — light */
@@ -479,6 +496,33 @@ main .section.bronze a.button:any-link {
   border-color: rgb(128 128 128 / 70%);
   color: var(--text-color);
   min-width: 280px;
+}
+
+/* section metadata — dark green */
+main .section.dark-green {
+  background-color: var(--dark-green);
+  color: var(--white);
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.dark-green h1,
+main .section.dark-green h2,
+main .section.dark-green h3,
+main .section.dark-green h4,
+main .section.dark-green h5,
+main .section.dark-green h6 {
+  color: var(--white);
+}
+
+main .section.dark-green a:any-link {
+  color: var(--white);
+}
+
+main .section.dark-green a.button:any-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
 }
 
 /* Large display headings for feature sections — desktop */

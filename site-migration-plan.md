@@ -228,36 +228,39 @@
 
 ## 3. Reusable Block Library
 
-### Blocks Needed (26 distinct blocks)
+### Blocks Needed (18 distinct blocks — consolidated from original 26)
 
-| # | Block Name | Description | Frequency | Priority |
-|---|-----------|-------------|-----------|----------|
-| 1 | **hero** | Full-width image/video with heading + CTAs. Variants: image-only, video-bg, split-CTA, badge-overlay | ~100+ pages | P0 |
-| 2 | **breadcrumb** | Hierarchical path navigation | ~400+ pages | P0 |
-| 3 | **embed** | YouTube video embed with thumbnail + duration | ~60+ pages | P0 |
-| 4 | **cards** | Responsive card grid. Variants: role-card, article-card, feature-card, numbered-card | ~50+ pages | P0 |
-| 5 | **columns** | 2/3-column layout. Variants: text+image, CTA pairs, CTA triples | ~40+ pages | P0 |
-| 6 | **accordion** | Collapsible sections. Variants: FAQ-grouped, step-list | ~10+ pages | P1 |
-| 7 | **quote** | Full-width testimonial banner. Variants: green-bg, grey-bg | ~15+ pages | P1 |
-| 8 | **cta-banner** | Full-width coloured CTA with heading + button. Variants: orange, green, black | ~20+ pages | P1 |
-| 9 | **prev-next-nav** | Previous/Next sibling page links bar | ~40+ pages | P1 |
-| 10 | **at-a-glance** | Key-value metrics display (salary, age, qualifications) | ~45 pages | P1 |
-| 11 | **carousel** | Horizontal scrolling card/slide set. Variants: card, image, testimonial | ~10 pages | P1 |
-| 12 | **quick-nav** | In-section horizontal link bar | ~5 pages | P2 |
-| 13 | **promo-banner** | Image/GIF + text + CTA horizontal layout | ~5 pages | P2 |
-| 14 | **tabs** | Tab switcher with content panels | ~2 pages | P2 |
-| 15 | **role-card-grid** | Specialized card grid for role listings (thumbnail, corps, title, salary) | ~20 pages | P1 |
-| 16 | **article-card-grid** | Card grid for blog listings (thumbnail, headline, teaser, badge) | ~5 pages | P2 |
-| 17 | **unit-card** | Reserve centre unit detail (crest, contact, description, roles) | ~240 pages | P1 |
-| 18 | **location-card** | Careers centre detail (address, phone, hours) | ~69 pages | P1 |
-| 19 | **image-gallery** | Scrollable image set | ~45 pages | P2 |
-| 20 | **training-pathway** | Numbered step progression | ~45 pages | P2 |
-| 21 | **filter-bar** | Toggle/filter controls for listing pages | ~3 pages | P2 |
-| 22 | **map** | Embedded interactive map with location markers | ~3 pages | P3 |
-| 23 | **parallax-cards** | Vertical stacked cards with scroll effect | ~1 page | P3 |
-| 24 | **quiz-widget** | Interactive questionnaire | ~1 page | P3 |
-| 25 | **audio-player** | Embedded audio/soundbite component | ~2 pages | P3 |
-| 26 | **data-table** | Structured bulleted data (e.g., fitness times by role) | ~5 pages | P3 |
+> **Consolidation note:** Role-card-grid and article-card-grid are now CSS variants of the `cards` block. Image-gallery is a variant of `carousel`. Training-pathway uses `accordion` or default content. Data-table uses the existing `table` block. Unit-card and location-card merged into one block. Audio-player handled by `embed`.
+
+| # | Block Name | Description | Frequency | Priority | Status |
+|---|-----------|-------------|-----------|----------|--------|
+| 1 | **hero** | Full-width image/video with heading + CTAs. Variants: default, campaign (video modal), events | ~100+ pages | P0 | ✅ Built |
+| 2 | **breadcrumb** | Hierarchical path navigation (handled by header block) | ~400+ pages | P0 | ✅ Built (in header) |
+| 3 | **embed** | YouTube/Vimeo/Twitter embed with thumbnail + lazy load. Also handles audio embeds | ~60+ pages | P0 | ✅ Built |
+| 4 | **cards** | Responsive card grid. CSS variants: `.role` (role listings), `.article` (blog cards) | ~50+ pages | P0 | ✅ Built + variants added |
+| 5 | **columns** | 2/3-column layout. Variants: text+image, CTA pairs | ~40+ pages | P0 | ✅ Built |
+| 6 | **cta-banner** | Full-width CTA bar. Variants: single-column, dual-column. BG via section metadata (accent, dark-green, dark) | ~200+ pages | P0 | ✅ Built |
+| 7 | **prev-next-nav** | Previous/Next sibling page links bar | ~45 pages | P1 | ✅ Built |
+| 8 | **accordion** | Collapsible sections (native details/summary). Also used for FAQ and step-lists | ~10+ pages | P1 | ✅ Built |
+| 9 | **quote** | Full-width testimonial banner. Variants: green-bg, grey-bg via section metadata | ~15+ pages | P1 | ✅ Built |
+| 10 | **carousel** | Horizontal scrolling card/slide set. Also serves as image-gallery variant | ~10+ pages | P1 | ✅ Built |
+| 11 | **at-a-glance** | Key-value metrics display (salary, age, qualifications) | ~45 pages | P1 | To Do |
+| 12 | **location-card** | Location detail card. Variants: reserve-centre (unit details), careers-centre (simple) | ~309 pages | P1 | To Do |
+| 13 | **quick-nav** | In-section horizontal link bar | ~5 pages | P2 | To Do |
+| 14 | **promo-banner** | Image/GIF + text + CTA horizontal layout | ~5 pages | P2 | To Do |
+| 15 | **filter-bar** | Toggle/filter controls for listing pages | ~3 pages | P2 | To Do |
+| 16 | **map** | Embedded interactive map with location markers | ~3 pages | P3 | To Do |
+| 17 | **parallax-cards** | Vertical stacked cards with scroll effect | ~1 page | P3 | To Do |
+| 18 | **quiz-widget** | Interactive questionnaire | ~1 page | P3 | To Do |
+
+### Additional Blocks (already in project, not migration-specific)
+- **tabs** — Tabbed content panels (✅ Built)
+- **video** — Video player with placeholder (✅ Built)
+- **table** — Data tables (✅ Built, replaces planned data-table block)
+- **form** — Form rendering (✅ Built)
+- **feature-cards** — Homepage numbered card carousel (✅ Built, homepage-specific)
+- **header** / **footer** — Site chrome (✅ Built)
+- **fragment** / **modal** / **search** — Utility blocks (✅ Built)
 
 ### Priority Legend
 - **P0** = Used on nearly every page, must build first
@@ -273,21 +276,34 @@
 
 **Objective:** Establish the global design system, header, footer, and navigation that all pages depend on.
 
-**Status:** PARTIALLY COMPLETE (header and footer already migrated)
+**Status:** COMPLETE
 
 | Task | Status | Pages Affected |
 |------|--------|---------------|
-| Header/navigation migration | Done | All |
-| Footer migration | Done | All |
-| Design token extraction (colors, fonts, spacing) | To Do | All |
-| Global styles (styles.css) | To Do | All |
-| P0 blocks: hero, breadcrumb, embed, cards, columns | To Do | All |
+| Header/navigation migration | ✅ Done | All |
+| Footer migration | ✅ Done | All |
+| Design token extraction (colors, fonts, spacing) | ✅ Done | All |
+| Global styles (styles.css) | ✅ Done | All |
+| P0 blocks: hero, embed, cards, columns | ✅ Done | All |
+| Section metadata themes (dark, light, beige, olive, green, accent, bronze, dark-green, full-bleed) | ✅ Done | All |
+| Design tokens: `--dark-green`, `--card-border-radius`, `--content-max-width`, `--section-spacing` | ✅ Done | All |
 
-**Key design tokens to extract:**
-- Primary colors: Dark (#15171a), Orange (CTA), Green (secondary CTA), White
-- Typography: Heading font family, body font family, sizes
-- Spacing: Section padding, grid gaps, container max-widths
-- Breakpoints: Mobile, tablet, desktop transitions
+---
+
+### Phase 1b: Shared Components (NEW — cross-template blocks)
+
+**Objective:** Build blocks that are used across 4+ templates BEFORE any page migration begins, so bulk imports produce complete pages.
+
+**Status:** PARTIALLY COMPLETE
+
+| Task | Status | Pages Affected |
+|------|--------|---------------|
+| cta-banner block (single + dual variants) | ✅ Done | ~200+ pages across 7 templates |
+| prev-next-nav block | ✅ Done | ~45 content sub-pages |
+| Cards variant CSS (.role, .article) | ✅ Done | ~100 pages (role + blog listings) |
+| Button CSS consolidation (removed duplicates from columns.css) | ✅ Done | All |
+| at-a-glance block | To Do | ~45 role detail pages |
+| location-card block (reserve + careers variants) | To Do | ~309 centre pages |
 
 ---
 

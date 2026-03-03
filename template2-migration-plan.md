@@ -61,18 +61,18 @@
 
 | # | Task | Description | Status |
 |---|------|-------------|--------|
-| A1 | Analyse `/regular-army/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | To Do |
-| A2 | Analyse `/army-reserve/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | To Do |
-| A3 | Analyse `/how-to-join/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | To Do |
-| A4 | Consolidated block mapping | Produce a mapping of which source sections map to which EDS blocks (existing vs. new). Confirm block variants needed. | To Do |
+| A1 | Analyse `/regular-army/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | ✅ Done |
+| A2 | Analyse `/army-reserve/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | ✅ Done |
+| A3 | Analyse `/how-to-join/` | Scrape & screenshot the page. Identify all sections, blocks, and unique elements. | ✅ Done |
+| A4 | Consolidated block mapping | Produce a mapping of which source sections map to which EDS blocks (existing vs. new). Confirm block variants needed. | ✅ Done |
 
 ### Phase B: New Block Development (Shared Blocks First)
 
 | # | Task | Description | Status |
 |---|------|-------------|--------|
-| B1 | Build `cta-banner` block | JS + CSS. Full-width colored CTA with heading + button. Variants: orange, green, black. | To Do |
-| B2 | Build `quick-nav` block | JS + CSS. Horizontal in-section link bar for landing page navigation. | To Do |
-| B3 | Build `promo-banner` block | JS + CSS. Image/GIF + text + CTA horizontal layout. | To Do |
+| B1 | Build `cta-banner` block | JS + CSS. Full-width colored CTA with heading + button. Variants: orange, green, black. | ✅ Done (already built) |
+| B2 | Build `quick-nav` block | JS + CSS. Horizontal in-section link bar for landing page navigation. | ✅ Done |
+| B3 | Build `promo-banner` block | JS + CSS. Image/GIF + text + CTA horizontal layout. | ✅ Done |
 
 ### Phase C: Migrate Page 1 — `/how-to-join/`
 
@@ -80,9 +80,9 @@ _Simplest of the three. Establishes shared patterns for hero, quick-nav, and cta
 
 | # | Task | Description | Status |
 |---|------|-------------|--------|
-| C1 | Migrate content | Extract content from source page and author EDS markdown with block tables. | To Do |
-| C2 | Convert & preview | Convert markdown to HTML. Preview locally and iterate on content accuracy. | To Do |
-| C3 | Visual QA | Compare rendered page against original. Refine CSS and block styling. | To Do |
+| C1 | Migrate content | Extract content from source page and author EDS markdown with block tables. | ✅ Done |
+| C2 | Convert & preview | Convert markdown to HTML. Preview locally and iterate on content accuracy. | ✅ Done |
+| C3 | Visual QA | Compare rendered page against original. Refine CSS and block styling. | ✅ Done |
 
 ### Phase D: Migrate Page 2 — `/regular-army/`
 

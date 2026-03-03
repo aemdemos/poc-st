@@ -1,0 +1,117 @@
+/*
+ * Promo Banner Block
+ *
+ * Horizontal layout: image/GIF on left, dark text panel on right.
+ * White heading (large display), body text, and outlined CTA button.
+ */
+
+/* ---- Block base ---- */
+.promo-banner {
+  max-width: var(--content-max-width);
+  margin: var(--spacing-m) auto;
+  padding: 0 var(--spacing-m);
+}
+
+.promo-banner > div {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---- Image column ---- */
+.promo-banner-image {
+  flex: 0 0 auto;
+}
+
+.promo-banner-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---- Text column ---- */
+.promo-banner-text {
+  background-color: var(--dark-color);
+  color: var(--white);
+  padding: var(--spacing-m);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.promo-banner-text h2,
+.promo-banner-text h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: var(--spacing-s);
+  line-height: 0.8;
+  border-bottom: 1px solid var(--white);
+  padding-bottom: var(--spacing-s);
+}
+
+.promo-banner-text p {
+  font-size: var(--body-font-size-m);
+  color: var(--white);
+  margin-bottom: var(--spacing-m);
+  line-height: 1.3;
+  max-width: 650px;
+}
+
+.promo-banner-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Button: outlined white on dark ---- */
+.promo-banner-text a:any-link {
+  background-color: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  padding: var(--button-padding);
+  text-align: center;
+  display: inline-block;
+  min-width: min(330px, 100%);
+  transition: var(--button-transition);
+  text-decoration: none;
+}
+
+.promo-banner-text a:hover {
+  background-color: var(--white);
+  color: var(--dark-color);
+}
+
+/* ---- Container: full-bleed ---- */
+main .section.promo-banner-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.promo-banner-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* ---- Responsive: desktop ---- */
+@media (width >= 900px) {
+  .promo-banner {
+    padding: 0 32px;
+    margin: var(--spacing-l) auto;
+  }
+
+  .promo-banner-text {
+    padding: 25px 25px 30px;
+  }
+
+  .promo-banner-text h2,
+  .promo-banner-text h3 {
+    font-size: 80px;
+  }
+}

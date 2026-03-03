@@ -39,3 +39,120 @@
   content: '—';
   padding-right: 0.5ch;
 }
+
+/* ---- Quote as full-width banner (olive/beige section) ---- */
+main .section.olive.quote-container,
+main .section.beige.quote-container {
+  min-height: auto;
+  padding: 60px 24px 80px;
+}
+
+main .section.olive.quote-container > div,
+main .section.beige.quote-container > div {
+  max-width: 720px;
+}
+
+/* Suppress default open/close curly-quote marks for banner quotes */
+main .section.olive.quote-container .quote blockquote .quote-quotation p:first-child::before,
+main .section.olive.quote-container .quote blockquote .quote-quotation p:last-child::after,
+main .section.beige.quote-container .quote blockquote .quote-quotation p:first-child::before,
+main .section.beige.quote-container .quote blockquote .quote-quotation p:last-child::after {
+  content: none;
+}
+
+main .section.olive.quote-container .quote blockquote,
+main .section.beige.quote-container .quote blockquote {
+  text-align: start;
+  max-width: 720px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* SVG quotation-mark icon via ::before */
+main .section.olive.quote-container .quote blockquote::before,
+main .section.beige.quote-container .quote blockquote::before {
+  content: '';
+  display: block;
+  flex: 0 0 60px;
+  width: 60px;
+  height: 52px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='164' height='143' viewBox='0 0 164 143'%3E%3Cpath d='M0.778877 81.8213L38.6036 0.591187H73.7151L48.1711 73.574H69.247V142.042H0.778877V81.8213ZM45.3522 75.574L70.8962 2.59119H39.8785L2.77888 82.2641V140.042H67.247V75.574H45.3522ZM90.791 81.8213L128.616 0.591187H163.727L138.183 73.574H159.259V142.042H90.791V81.8213ZM135.364 75.574L160.908 2.59119H129.891L92.791 82.2641V140.042H157.259V75.574H135.364Z' fill='%2315171A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+main .section.olive.quote-container .quote blockquote .quote-quotation,
+main .section.beige.quote-container .quote blockquote .quote-quotation {
+  font-family: var(--heading-font-family);
+  font-size: 42px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  text-indent: 0;
+  position: relative;
+  padding-bottom: var(--spacing-m);
+}
+
+/* Decorative line below quote text */
+main .section.olive.quote-container .quote blockquote .quote-quotation::after,
+main .section.beige.quote-container .quote blockquote .quote-quotation::after {
+  content: '';
+  display: block;
+  width: 154px;
+  height: 1px;
+  background-color: var(--text-color);
+  margin: var(--spacing-m) 0 0;
+}
+
+main .section.beige.quote-container::after {
+  display: none;
+}
+
+@media (width >= 600px) {
+  main .section.olive.quote-container .quote blockquote,
+  main .section.beige.quote-container .quote blockquote {
+    gap: 24px;
+  }
+
+  main .section.olive.quote-container .quote blockquote::before,
+  main .section.beige.quote-container .quote blockquote::before {
+    flex: 0 0 100px;
+    width: 100px;
+    height: 87px;
+  }
+
+  main .section.olive.quote-container .quote blockquote .quote-quotation,
+  main .section.beige.quote-container .quote blockquote .quote-quotation {
+    font-size: 54px;
+  }
+}
+
+@media (width >= 900px) {
+  main .section.olive.quote-container,
+  main .section.beige.quote-container {
+    padding: 80px 30px 120px;
+  }
+
+  main .section.olive.quote-container .quote blockquote,
+  main .section.beige.quote-container .quote blockquote {
+    gap: 34px;
+  }
+
+  main .section.olive.quote-container .quote blockquote::before,
+  main .section.beige.quote-container .quote blockquote::before {
+    flex: 0 0 164px;
+    width: 164px;
+    height: 143px;
+  }
+
+  main .section.olive.quote-container .quote blockquote .quote-quotation,
+  main .section.beige.quote-container .quote blockquote .quote-quotation {
+    font-size: var(--heading-font-size-xl);
+    max-width: 520px;
+  }
+}

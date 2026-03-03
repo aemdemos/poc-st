@@ -40,6 +40,22 @@
   z-index: 1;
 }
 
+/* ARMY watermark text */
+.hero > div:first-child::before {
+  content: 'ARMY';
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  z-index: 1;
+  font-family: var(--heading-font-family);
+  font-size: clamp(200px, 40vw, 500px);
+  font-weight: 700;
+  line-height: 0.8;
+  color: rgb(255 255 255 / 15%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
 /* Content layer */
 .hero > div:last-child {
   position: relative;
@@ -70,8 +86,11 @@
 /* Hero paragraph text */
 .hero p {
   color: var(--white);
-  max-width: 600px;
+  max-width: 330px;
   margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* Hero CTA buttons */
@@ -81,14 +100,15 @@
 }
 
 .hero p a {
-  display: inline-block;
-  padding: var(--button-padding);
+  display: block;
+  padding: 14px 20px;
   font-family: var(--button-font-family);
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
   letter-spacing: var(--button-letter-spacing);
   text-transform: var(--button-text-transform);
   text-decoration: none;
+  text-align: center;
   line-height: 1;
   border: 2px solid var(--accent-color);
   background-color: var(--accent-color);
@@ -96,12 +116,9 @@
   transition: var(--button-transition);
 }
 
-/* Multiple CTAs in the same paragraph */
+/* Second CTA — also solid orange on mobile (matching original) */
 .hero p a + a {
-  margin-left: 12px;
-  background-color: transparent;
-  border-color: var(--white);
-  color: var(--white);
+  margin-left: 0;
 }
 
 .hero p a:hover {
@@ -109,9 +126,28 @@
   border-color: var(--accent-hover-color);
 }
 
-.hero p a + a:hover {
-  background-color: var(--white);
-  color: var(--text-color);
+/* Desktop: allow side-by-side buttons */
+@media (width >= 600px) {
+  .hero p {
+    flex-direction: row;
+    max-width: none;
+  }
+
+  .hero p a {
+    display: inline-block;
+    width: auto;
+  }
+
+  .hero p a + a {
+    background-color: transparent;
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  .hero p a + a:hover {
+    background-color: var(--white);
+    color: var(--text-color);
+  }
 }
 
 /* Container: remove section constraints for full-bleed

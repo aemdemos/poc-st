@@ -54,6 +54,35 @@
   }
 }
 
+/* ---- Columns in beige section (content block variant) ---- */
+main .section.beige.columns-container {
+  min-height: auto;
+  padding: var(--spacing-xl) 0 80px;
+}
+
+main .section.beige.columns-container::after {
+  display: none;
+}
+
+.beige .columns h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-s);
+}
+
+.beige .columns > div > div + div {
+  border-top: none;
+}
+
+@media (width >= 900px) {
+  .beige .columns > div > div + div {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
 /* ============================================================
    Hero CTA variant — columns directly after hero (LEGACY)
    Used by the homepage. New pages should use the cta-banner

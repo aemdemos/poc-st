@@ -63,4 +63,21 @@ export default async function decorate(block) {
   });
 
   block.prepend(tablist);
+
+  // Auto-embed YouTube links in tab panels
+  block.querySelectorAll('.tabs-panel a[href*="youtube.com/watch"], .tabs-panel a[href*="youtu.be/"]').forEach((link) => {
+    const url = new URL(link.href);
+    let videoId;
+    if (url.hostname.includes('youtube.com')) {
+      videoId = url.searchParams.get('v');
+    } else if (url.hostname.includes('youtu.be')) {
+      videoId = url.pathname.slice(1);
+    }
+    if (videoId) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'youtube-embed';
+      wrapper.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}" title="${link.textContent}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+      link.parentElement.replaceWith(wrapper);
+    }
+  });
 }

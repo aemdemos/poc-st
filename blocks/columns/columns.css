@@ -84,6 +84,167 @@ main .section.beige.columns-container::after {
 }
 
 /* ============================================================
+   Variant: Entry Matrix (.columns.entry-matrix)
+   Side-by-side split-panel layout: dark left (quiz/text) and
+   dark-green right (oversized outlined number + CTA).
+   Used for "14 Ways to Join" / quiz replacement section.
+   ============================================================ */
+
+/* Block container: constrain width to match promo-banner and centre */
+.columns-wrapper .columns.entry-matrix {
+  max-width: calc(var(--content-max-width) + 64px);
+  margin: 0 auto;
+}
+
+/* Block row: stack on mobile, side-by-side on desktop.
+   Prefixed with .columns-wrapper to ensure ascending specificity
+   relative to .beige variant selectors above. */
+.columns-wrapper .columns.entry-matrix > div {
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (width >= 900px) {
+  .columns-wrapper .columns.entry-matrix > div {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.columns-wrapper .columns.entry-matrix > div > div {
+  padding: 40px 24px;
+  order: unset;
+}
+
+@media (width >= 900px) {
+  .columns-wrapper .columns.entry-matrix > div > div {
+    padding: 40px;
+    flex: 1 1 50%;
+    min-height: 480px;
+  }
+}
+
+.columns-wrapper .columns.entry-matrix > div > div + div {
+  border: none;
+  padding-left: 24px;
+}
+
+@media (width >= 900px) {
+  .columns-wrapper .columns.entry-matrix > div > div + div {
+    border: none;
+    padding-left: 40px;
+  }
+}
+
+/* Left panel (col 1): dark with white text — quiz/text */
+.columns-wrapper .columns.entry-matrix > div > div:first-child {
+  background-color: var(--dark-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* General h3 styling — must precede panel-specific h3 overrides */
+.columns.entry-matrix h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-s);
+}
+
+.columns.entry-matrix > div > div:first-child h3 {
+  color: var(--white);
+}
+
+.columns.entry-matrix > div > div:first-child p {
+  color: rgb(255 255 255 / 80%);
+}
+
+.columns.entry-matrix > div > div:first-child a:any-link {
+  color: var(--white);
+}
+
+.columns.entry-matrix > div > div:first-child a.button:any-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Right panel (col 2): dark-green with centered oversized number */
+.columns-wrapper .columns.entry-matrix > div > div:last-child {
+  background-color: var(--dark-green);
+  color: var(--white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.columns.entry-matrix > div > div:last-child h3 {
+  color: var(--white);
+  font-size: var(--heading-font-size-xl);
+}
+
+.columns.entry-matrix > div > div:last-child a:any-link {
+  color: var(--white);
+}
+
+/* "View all" link: plain underlined link, not a button */
+.columns.entry-matrix > div > div:last-child a.button:any-link {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: var(--white);
+  text-decoration: underline;
+  font-size: var(--body-font-size-m);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.columns.entry-matrix > div > div:last-child a.button:hover {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Oversized outlined number */
+.columns.entry-matrix h2 {
+  font-size: 160px;
+  font-family: var(--heading-font-family);
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white);
+  line-height: 0.68;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+@media (width >= 900px) {
+  .columns.entry-matrix h2 {
+    font-size: 300px;
+  }
+}
+
+/* Section: full-bleed, no padding
+   Placed after block-level selectors to satisfy no-descending-specificity
+   (:has() raises specificity above .columns-wrapper prefix). */
+main .section.columns-container:has(.columns.entry-matrix) {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.columns-container:has(.columns.entry-matrix) > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* ============================================================
    Hero CTA variant — columns directly after hero (LEGACY)
    Used by the homepage. New pages should use the cta-banner
    block instead. Can be removed once homepage is migrated.

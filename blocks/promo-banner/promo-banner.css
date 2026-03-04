@@ -88,8 +88,9 @@
   color: var(--dark-color);
 }
 
-/* ---- Container: full-bleed ---- */
+/* ---- Container: full-bleed with beige background ---- */
 main .section.promo-banner-container {
+  background-color: rgb(229 226 218);
   margin: 0;
   padding: 0;
 }

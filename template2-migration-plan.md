@@ -90,10 +90,10 @@ _Adds tabbed content (Soldiers/Officers) and quiz widget complexity._
 
 | # | Task | Description | Status |
 |---|------|-------------|--------|
-| D1 | Migrate content | Extract content from source page and author EDS markdown. | To Do |
-| D2 | Build additional variants | Create any new block variants needed (e.g., tabbed content for Soldiers/Officers switcher). | To Do |
-| D3 | Convert & preview | Convert markdown to HTML. Preview locally and iterate. | To Do |
-| D4 | Visual QA | Compare against original. Refine CSS and block styling. | To Do |
+| D1 | Migrate content | Extract content from source page and author EDS markdown. | Done |
+| D2 | Build additional variants | No new variants needed — reused hero, quick-nav, promo-banner, cards, quote, tabs, columns, cta-banner. Quiz widget simplified to columns+CTA. | Done |
+| D3 | Convert & preview | Converted markdown to HTML. All 10 sections rendering correctly with proper block decoration. | Done |
+| D4 | Visual QA | All sections verified: hero, quick-nav, beige content, columns, promo-banner, cards (3-col), quote (olive), tabs (2 panels working), quote (beige), cta-banner (accent). Zero console errors. | Done |
 
 ### Phase E: Migrate Page 3 — `/army-reserve/`
 

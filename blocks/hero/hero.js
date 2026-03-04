@@ -4,6 +4,18 @@ function getYouTubeId(url) {
 }
 
 export default function decorate(block) {
+  // Scroll-to-next-section chevron button
+  const chevron = document.createElement('button');
+  chevron.className = 'hero-chevron';
+  chevron.setAttribute('aria-label', 'Scroll to next section');
+  chevron.innerHTML = '<svg viewBox="0 0 11 18" width="11" height="18"><line x1="10.18" y1="9.86" x2="1.5" y2="1.18" stroke="#15171a" stroke-width="2"></line><line x1="10.23" y1="8.5" x2="1.55" y2="17.18" stroke="#15171a" stroke-width="2"></line></svg>';
+  chevron.addEventListener('click', () => {
+    const heroSection = block.closest('.section');
+    const nextSection = heroSection?.nextElementSibling;
+    if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+  });
+  block.appendChild(chevron);
+
   const section = block.closest('.section');
   if (!section || !section.classList.contains('campaign')) return;
 

@@ -23,6 +23,7 @@
 .cta-banner-single h2,
 .cta-banner-single h3 {
   margin-bottom: var(--spacing-s);
+  text-transform: none;
 }
 
 .cta-banner-single p:last-child {

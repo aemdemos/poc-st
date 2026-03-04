@@ -96,6 +96,9 @@ body {
   display: none;
   margin: 0;
   background-color: var(--background-color);
+  background-image: url('https://jobs.army.mod.uk/assets/images/background-grunge.webp');
+  background-size: 100%;
+  background-repeat: repeat;
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -149,9 +152,21 @@ h6 {
 h1 { font-size: var(--heading-font-size-xxl); }
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+
+h4 {
+  font-size: var(--heading-font-size-m);
+  text-transform: none;
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+  text-transform: none;
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+  text-transform: none;
+}
 
 p,
 dl,
@@ -367,12 +382,6 @@ main .section.dark a.button:any-link {
 /* section metadata — beige (Find Your Fit) */
 main .section.beige {
   background-color: rgb(229 226 218);
-  background-image:
-    linear-gradient(to bottom, rgb(229 226 218 / 40%) 0%, rgb(229 226 218 / 50%) 100%),
-    url('https://jobs.army.mod.uk/assets/images/background-grunge.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   margin: 0;
   display: flex;
   align-items: center;
@@ -400,15 +409,19 @@ main .section.beige h2 {
   letter-spacing: -1px;
 }
 
+/* Beige compact: sections with only default content (no large blocks or h2) */
+main .section.beige:not(:has(h2, .quote-wrapper)) {
+  min-height: auto;
+  padding: 60px 0;
+}
+
+main .section.beige:not(:has(h2, .quote-wrapper))::after {
+  display: none;
+}
+
 /* section metadata — olive/khaki */
 main .section.olive {
   background-color: var(--olive-accent);
-  background-image:
-    linear-gradient(to bottom, rgb(161 159 122 / 60%) 0%, rgb(161 159 122 / 70%) 100%),
-    url('https://jobs.army.mod.uk/assets/images/background-grunge.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   margin: 0;
   display: flex;
   align-items: center;

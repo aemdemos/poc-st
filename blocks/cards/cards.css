@@ -247,6 +247,76 @@
 }
 
 /* ============================================================
+   Variant: CTA Cards (.cards.cta)
+   No-image cards with heading, text, and full-width orange CTA.
+   Used for "What's next?" action cards.
+   ============================================================ */
+.cards.cta > ul {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.cards.cta > ul > li {
+  border: none;
+  border-radius: var(--card-border-radius);
+  background-color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.cards.cta .cards-card-image {
+  display: none;
+}
+
+.cards.cta .cards-card-body {
+  padding: var(--spacing-m);
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards.cta .cards-card-body h3 {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: none;
+  margin-bottom: var(--spacing-xs);
+}
+
+.cards.cta .cards-card-body p {
+  font-size: var(--body-font-size-m);
+  margin-bottom: var(--spacing-s);
+}
+
+.cards.cta .cards-card-body p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.cards.cta .cards-card-body a.button:any-link {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+/* Section heading above CTA cards: small label style */
+.section:has(.cards-wrapper .cards.cta) > .default-content-wrapper > h2 {
+  font-size: 22px;
+  line-height: 0.9;
+}
+
+/* Keyline divider before CTA card sections */
+.section:has(.cards-wrapper .cards.cta) > .default-content-wrapper > h2::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  background-color: var(--accent-color);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
    Mobile carousel mode (.cards-carousel)
    Active on journey/recommended variants below 600px.
    JS toggles .cards-carousel class via matchMedia.

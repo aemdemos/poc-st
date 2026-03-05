@@ -37,6 +37,64 @@
           "section": "default-content"
         }
       ]
+    },
+    {
+      "name": "section-landing-page",
+      "urls": ["https://jobs.army.mod.uk/army-reserve/"],
+      "description": "Section landing page with video hero, quick nav, carousels, parallax cards, map CTA, social video carousel, image slider, quote banner, CTA cards, and CTA banner",
+      "blocks": [
+        {
+          "name": "hero-video",
+          "instances": ["div[class*='HeroVideoBanner_heroContainer']"]
+        },
+        {
+          "name": "quick-nav",
+          "instances": ["section[class*='PageLinks_pageLinks']"]
+        },
+        {
+          "name": "section-intro-text",
+          "instances": ["section[class*='FreeText_container']"],
+          "section": "default-content"
+        },
+        {
+          "name": "carousel",
+          "instances": ["section[class*='CenteredCarousel_centeredCarousel']"]
+        },
+        {
+          "name": "section-video-content",
+          "instances": ["section[class*='ContentBlock_contentBlock']"],
+          "section": "default-content"
+        },
+        {
+          "name": "parallax-cards",
+          "instances": ["section[class*='VerticalParallaxCards_carouselContainer']"]
+        },
+        {
+          "name": "section-map-cta",
+          "instances": ["section[class*='ReserveCentreCTAMap_mapContainer']"],
+          "section": "default-content"
+        },
+        {
+          "name": "carousel-social",
+          "instances": ["section[class*='SocialCarousel_centeredCarousel']"]
+        },
+        {
+          "name": "hero-banner",
+          "instances": ["section[class*='ImageAndTextSlider_banner']"]
+        },
+        {
+          "name": "quote",
+          "instances": ["section[class*='QuoteBanner_quoteBanner']"]
+        },
+        {
+          "name": "cards-cta",
+          "instances": ["section[class*='CtaBar_ctaBar']:has([class*='Keyline_text'] :is(h3:not(:empty)))"]
+        },
+        {
+          "name": "cta-banner",
+          "instances": ["section[class*='CtaBar_ctaBar']:has([class*='CtaBar_column']:only-child)"]
+        }
+      ]
     }
   ]
 }

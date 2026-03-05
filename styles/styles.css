@@ -329,6 +329,12 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+/* Default content sections — add vertical padding for breathing room */
+main > .section:not([class*="-container"], .beige, .olive, .dark-green, .green, .accent) > .default-content-wrapper {
+  padding-top: var(--spacing-l);
+  padding-bottom: var(--spacing-l);
+}
+
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
@@ -409,13 +415,20 @@ main .section.beige h2 {
   letter-spacing: -1px;
 }
 
+/* Beige map CTA: section with h4 watermark ("YOUR JOURNEY BEGINS HERE") */
+main .section.beige:has(h4) {
+  min-height: 850px;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
 /* Beige compact: sections with only default content (no large blocks or h2) */
-main .section.beige:not(:has(h2, .quote-wrapper)) {
+main .section.beige:not(:has(h2, h4, .quote-wrapper)) {
   min-height: auto;
   padding: 60px 0;
 }
 
-main .section.beige:not(:has(h2, .quote-wrapper))::after {
+main .section.beige:not(:has(h2, h4, .quote-wrapper))::after {
   display: none;
 }
 
@@ -538,6 +551,59 @@ main .section.dark-green a.button:any-link {
   color: var(--text-color);
 }
 
+/* Beige map CTA: child rules (after all section heading rules for ascending specificity) */
+main .section.beige:has(h4) .default-content-wrapper {
+  position: relative;
+}
+
+main .section.beige:has(h4) h3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+main .section.beige:has(h4) h3::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--accent-color);
+  flex-shrink: 0;
+}
+
+main .section.beige:has(h4) .button-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: -200px;
+  margin-bottom: 80px;
+}
+
+main .section.beige:has(h4) h4 {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  right: -5%;
+  transform: translateY(-50%);
+  font-size: clamp(100px, 14vw, 220px);
+  line-height: 0.85;
+  color: rgb(255 255 255 / 50%);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 0;
+  margin: 0;
+}
+
+main .section.beige:has(h4) p:has(picture) {
+  position: relative;
+  z-index: 1;
+}
+
 /* Large display headings for feature sections — desktop */
 @media (width >= 1200px) {
   main .section.beige h2,
@@ -545,4 +611,74 @@ main .section.dark-green a.button:any-link {
     font-size: 160px;
     letter-spacing: -1.6px;
   }
+}
+
+/* Beige compact: sections with cards blocks (CTA cards, etc.) */
+main .section.beige:has(.cards-wrapper) {
+  min-height: auto;
+  padding: var(--spacing-xl) 0;
+  display: block;
+}
+
+main .section.beige:has(.cards-wrapper)::after {
+  display: none;
+}
+
+main .section.beige:has(.cards-wrapper) h2 {
+  font-size: var(--heading-font-size-xl);
+  letter-spacing: normal;
+  text-align: center;
+  margin-bottom: var(--spacing-m);
+}
+
+/* ---- Video thumbnail: play button overlay on linked images ---- */
+main .section .default-content-wrapper p:has(> a[href*="youtube"] picture),
+main .section .default-content-wrapper p:has(> a[href*="vimeo"] picture) {
+  margin: 0;
+}
+
+main .section .default-content-wrapper a[href*="youtube"]:has(picture),
+main .section .default-content-wrapper a[href*="vimeo"]:has(picture) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+}
+
+main .section .default-content-wrapper a[href*="youtube"]:has(picture)::after,
+main .section .default-content-wrapper a[href*="vimeo"]:has(picture)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 36px;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+main .section .default-content-wrapper a[href*="youtube"]:has(picture):hover::after,
+main .section .default-content-wrapper a[href*="vimeo"]:has(picture):hover::after {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: var(--accent-hover-color);
+}
+
+main .section .default-content-wrapper a[href*="youtube"]:has(picture) img,
+main .section .default-content-wrapper a[href*="vimeo"]:has(picture) img {
+  display: block;
+  width: 100%;
+  transition: transform 0.3s;
+}
+
+main .section .default-content-wrapper a[href*="youtube"]:has(picture):hover img,
+main .section .default-content-wrapper a[href*="vimeo"]:has(picture):hover img {
+  transform: scale(1.02);
 }

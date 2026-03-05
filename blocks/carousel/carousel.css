@@ -1,5 +1,22 @@
+/* ============================================================
+   Base carousel: scroll-snap mechanics, nav dots & arrows.
+   All variants inherit these structural rules.
+   ============================================================ */
+
+/* ============================================================
+   Variant: Image Carousel (.carousel.image)
+   Centre-mode peek with landscape 7:5 images + olive caption.
+   Used for "Find the Reserve in You" section.
+   The base rules below double as the image variant defaults.
+   ============================================================ */
+
+/* Constrain slides to card width — centred */
 .carousel .carousel-slides-container {
   position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .carousel .carousel-slides,
@@ -14,22 +31,26 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   overflow: scroll clip;
+  order: 1;
 }
 
 .carousel .carousel-slides::-webkit-scrollbar {
   display: none;
 }
 
+/* Slide: card layout with image above, olive caption below */
 .carousel .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   position: relative;
   width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
+  min-height: auto;
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
 }
 
 .carousel .carousel-slide:has(.carousel-slide-content[data-align='center']) {
@@ -38,6 +59,15 @@
 
 .carousel .carousel-slide:has(.carousel-slide-content[data-align='right']) {
   align-items: flex-end;
+}
+
+/* Image: relative flow (not absolute overlay) with fixed aspect ratio */
+.carousel .carousel-slide .carousel-slide-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {
@@ -51,79 +81,127 @@
   object-fit: cover;
 }
 
+/* Caption area: olive background with dark text */
 .carousel .carousel-slide .carousel-slide-content {
   z-index: 1;
-  margin: 68px;
-  padding: 16px;
-  color: white;
-  background-color: rgb(19 19 19 / 75%);
+  margin: 0;
+  padding: 30px;
+  color: var(--text-color);
+  background-color: rgb(161 159 122);
   position: relative;
-  width: var(--slide-content-width, auto);
+  width: auto;
 }
 
+.carousel .carousel-slide .carousel-slide-content h1,
+.carousel .carousel-slide .carousel-slide-content h2,
+.carousel .carousel-slide .carousel-slide-content h3 {
+  color: var(--text-color);
+  font-size: 54px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  line-height: 0.9;
+}
+
+.carousel .carousel-slide .carousel-slide-content p {
+  color: var(--text-color);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/* CTA link inside last slide — outlined button style */
+.carousel .carousel-slide .carousel-slide-content p a {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 20px;
+  min-width: 330px;
+  border: 2px solid var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.carousel .carousel-slide .carousel-slide-content p a:hover {
+  background-color: var(--text-color);
+  color: var(--white);
+}
+
+/* Dot indicators: 12px, orange active, dark inactive */
 .carousel .carousel-slide-indicators {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
+  gap: 8px;
+  padding: 0;
+  background-color: transparent;
   line-height: 0;
 }
 
+/* stylelint-disable no-descending-specificity */
 .carousel .carousel-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background-color: #dadada;
+  background-color: var(--text-color);
   transition: background-color 0.2s;
 }
 
-.carousel .carousel-slide-indicator button:disabled,
+.carousel .carousel-slide-indicator button:disabled {
+  background-color: var(--accent-color);
+}
+
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: var(--accent-color);
 }
 
+/* Nav arrows: below slides, centred with gap for dots */
 .carousel .carousel-navigation-buttons {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 12px;
-  right: 12px;
+  position: static;
+  transform: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  z-index: 1;
+  justify-content: center;
+  gap: 160px;
+  padding: 16px 0 0;
+  z-index: 2;
+  order: 2;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 .carousel .carousel-navigation-buttons button {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   margin: 0;
   border-radius: 50%;
   padding: 0;
-  background-color: rgb(19 19 19 / 25%);
+  background-color: var(--text-color);
+  border: none;
   transition: background-color 0.2s;
 }
 
 .carousel .carousel-navigation-buttons button:hover,
 .carousel .carousel-navigation-buttons button:focus-visible {
-  background-color: rgb(19 19 19 / 75%);
+  background-color: var(--text-color);
+  opacity: 0.8;
 }
 
 .carousel .carousel-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid;
+  border: 2px solid var(--white);
   border-bottom: 0;
   border-left: 0;
-  height: 12px;
-  width: 12px;
+  height: 8px;
+  width: 8px;
   position: absolute;
   top: 50%;
   left: calc(50% + 2px);
@@ -134,20 +212,333 @@
   transform: translate(-50%, -50%) rotate(45deg);
   left: calc(50% - 2px);
 }
+/* stylelint-enable no-descending-specificity -- base indicator buttons */
+
+/* Dots row: overlaid on arrow row to create single-line navigation */
+.carousel > nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -22px;
+  padding: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.carousel > nav ol {
+  pointer-events: auto;
+}
+
+/* Section heading: small uppercase with orange keyline */
+.section.carousel-container > .default-content-wrapper h2 {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  line-height: 1;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Section spacing */
+main > .section.carousel-container {
+  padding: 40px 0;
+}
+
+main > .section.carousel-container > .default-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Standalone CTA below carousel — dark outlined, centred */
+main > .section.carousel-container > .default-content-wrapper .button-container {
+  text-align: center;
+  margin-top: 24px;
+}
+
+main > .section.carousel-container > .default-content-wrapper .button-container a.button {
+  display: inline-block;
+  min-width: 330px;
+  padding: 20px;
+  border: 2px solid var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+main > .section.carousel-container > .default-content-wrapper .button-container a.button:hover {
+  background-color: var(--text-color);
+  color: var(--white);
+}
 
 @media (width >= 600px) {
-  .carousel .carousel-navigation-buttons {
-    left: 24px;
-    right: 24px;
-  }
-
   .carousel .carousel-slide .carousel-slide-content {
-    --slide-content-width: calc((100% - 184px) / 2);
+    --slide-content-width: auto;
 
-    margin: 92px;
+    margin: 0;
   }
 
   .carousel .carousel-slide .carousel-slide-content[data-align='justify'] {
     --slide-content-width: auto;
   }
 }
+
+/* Desktop: full-bleed carousel wrapper for edge-to-edge peek */
+main > .section.carousel-container > .carousel-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* Desktop: 3-panel peek / centre-mode layout */
+@media (width >= 900px) {
+  .carousel .carousel-slides-container {
+    max-width: none;
+  }
+
+  .carousel .carousel-slides {
+    padding-inline: calc((100% - 700px) / 2);
+    align-items: flex-start;
+  }
+
+  .carousel .carousel-slide {
+    flex: 0 0 700px;
+    scroll-snap-align: center;
+    transition: opacity 0.3s;
+  }
+
+  .carousel .carousel-slide:not(.active) .carousel-slide-content {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Variant: Slick Carousel (.carousel.slick)
+   Transform-based centre-mode carousel with cloned slides for
+   infinite loop. translate3d positions the track; active slide
+   reveals caption with a smooth transition. Inactive slides
+   show only the image.
+   Used for "Find the Reserve in You" section.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity -- slick variant overrides base carousel rules */
+
+/* Transform-based track instead of scroll-snap — all viewports */
+.carousel.slick .carousel-slides-container {
+  overflow: hidden;
+}
+
+.carousel.slick .carousel-slides {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  overflow: visible;
+  padding-inline: 0;
+  will-change: transform;
+  user-select: none;
+  cursor: grab;
+}
+
+.carousel.slick .carousel-slides.dragging {
+  cursor: grabbing;
+}
+
+.carousel.slick .carousel-slide {
+  scroll-snap-align: none;
+  flex-shrink: 0;
+}
+
+/* Prevent image drag during swipe */
+.carousel.slick .carousel-slides img {
+  pointer-events: none;
+}
+
+/* Smooth content transition instead of display:none toggle */
+.carousel.slick .carousel-slide .carousel-slide-content {
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+  overflow: hidden;
+}
+
+@media (width >= 900px) {
+  /* Override base display:none — use height + opacity for smooth reveal */
+  .carousel.slick .carousel-slide:not(.active) .carousel-slide-content {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .carousel.slick .carousel-slide.active .carousel-slide-content {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel.slick .carousel-slides {
+    transition-duration: 0.01s !important;
+  }
+
+  .carousel.slick .carousel-slide .carousel-slide-content {
+    transition-duration: 0.01s !important;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   Variant: Social Carousel (.carousel.social)
+   Portrait 9:16 video thumbnails with overlaid play buttons.
+   Shows 3 cards side-by-side on desktop.
+   Used for "Our Reservists / Meet the Reservists" section.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity -- social variant selectors are independent of base carousel */
+
+/* Portrait aspect ratio */
+.carousel.social .carousel-slide-image {
+  aspect-ratio: 9 / 16;
+}
+
+/* No rounded corners on portrait cards */
+.carousel.social .carousel-slide {
+  border-radius: 0;
+}
+
+/* Caption as overlay play button instead of olive block */
+.carousel.social .carousel-slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+/* Style the "Play Video" link as an orange circle play button */
+.carousel.social .carousel-slide-content p,
+.carousel.social .carousel-slide-content .button-container {
+  margin: 0;
+  text-align: center;
+}
+
+.carousel.social .carousel-slide-content a.button:any-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  text-indent: -9999px;
+  overflow: hidden;
+  border: none;
+  text-decoration: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+/* Play triangle icon */
+.carousel.social .carousel-slide-content a.button::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--white);
+  text-indent: 0;
+  margin-left: 4px;
+}
+
+/* Section heading: rotated vertical text on left */
+.section.carousel-container:has(.carousel.social) > .default-content-wrapper h2 {
+  font-family: var(--heading-font-family);
+  font-size: 80px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Desktop: 3 visible portrait slides */
+@media (width >= 900px) {
+  .carousel.social .carousel-slides-container {
+    max-width: none;
+  }
+
+  .carousel.social .carousel-slides {
+    padding-inline: calc((100% - 1054px) / 2);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .carousel.social .carousel-slide {
+    flex: 0 0 338px;
+    scroll-snap-align: center;
+  }
+
+  /* Always show content (play button) on social slides */
+  .carousel.social .carousel-slide:not(.active) .carousel-slide-content {
+    display: flex;
+  }
+
+  /* Vertical heading layout: heading left, carousel right */
+  .section.carousel-container:has(.carousel.social) {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .section.carousel-container:has(.carousel.social) > .default-content-wrapper {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    padding: 0 40px;
+    max-width: none;
+    justify-self: center;
+  }
+
+  .section.carousel-container:has(.carousel.social) > .default-content-wrapper h2 {
+    font-size: 120px;
+    border-left: none;
+    padding-left: 0;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .section.carousel-container:has(.carousel.social) > .carousel-wrapper {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel.social,
+  .carousel.social .carousel-slides-container {
+    max-width: 100%;
+  }
+}
+/* stylelint-enable no-descending-specificity */

@@ -276,6 +276,11 @@
   flex-direction: column;
 }
 
+/* Hide empty first card-body div (from empty image column in markdown) */
+.cards.cta > ul > li > .cards-card-body:first-child:empty {
+  display: none;
+}
+
 .cards.cta .cards-card-body h3 {
   font-family: var(--heading-font-family);
   font-size: 32px;
@@ -431,3 +436,145 @@
 .cards:not(.cards-carousel) .cards-carousel-live-region {
   display: none;
 }
+
+/* ============================================================
+   Olive section cards: stacked horizontal layout
+   Matches the original "Become a Reservist / How it works"
+   vertical parallax card layout with alternating image positions.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity -- olive variant selectors are independent of CTA variant */
+.olive .cards > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.olive .cards > ul > li {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: var(--card-border-radius);
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.olive .cards > ul > li img {
+  aspect-ratio: 4 / 3;
+}
+
+.olive .cards .cards-card-body {
+  padding: var(--spacing-m);
+  margin: 0;
+}
+
+.olive .cards .cards-card-body h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs);
+}
+
+.olive .cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  margin-bottom: var(--spacing-s);
+}
+
+.olive .cards .cards-card-body a.button:any-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+/* Desktop: side-by-side image + text with alternating positions */
+@media (width >= 900px) {
+  .olive .cards > ul > li {
+    flex-direction: row;
+    min-height: 320px;
+  }
+
+  .olive .cards .cards-card-image {
+    flex: 0 0 50%;
+    overflow: hidden;
+  }
+
+  .olive .cards > ul > li img {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 320px;
+  }
+
+  .olive .cards .cards-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-l);
+  }
+
+  .olive .cards .cards-card-body a.button:any-link {
+    width: auto;
+    display: inline-block;
+    align-self: flex-start;
+  }
+
+  /* Alternating: even cards flip image to right */
+  .olive .cards > ul > li:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Olive section: "Become a Reservist" keyline heading (small) */
+.olive.cards-container > .default-content-wrapper > h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.2;
+}
+
+/* Olive section "How it works" heading: large display text */
+.olive.cards-container > .default-content-wrapper > h3 {
+  font-size: 60px;
+  line-height: 0.85;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-l);
+}
+
+/* Desktop: two-column layout — headings left (sticky), cards right */
+@media (width >= 900px) {
+  .olive.cards-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    min-height: auto;
+  }
+
+  .olive.cards-container > .default-content-wrapper {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+    padding: var(--spacing-l);
+  }
+
+  .olive.cards-container > .cards-wrapper {
+    padding: 0;
+  }
+
+  .olive.cards-container > .default-content-wrapper > h3 {
+    font-size: 100px;
+  }
+}
+
+@media (width >= 1200px) {
+  .olive.cards-container > .default-content-wrapper > h3 {
+    font-size: 140px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

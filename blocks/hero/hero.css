@@ -214,139 +214,431 @@ main > .section.hero-container > div {
 }
 
 /* ============================================
-   Campaign variant — play button + two-column
+   Video variant — inline YouTube + play/pause
    ============================================ */
 
-.hero-campaign {
-  justify-content: center;
-  align-items: center;
+/* stylelint-disable no-descending-specificity -- video variant selectors are independent of base hero */
+.hero-video {
+  border-radius: 0;
 }
 
-/* Video area with play button */
-.hero-video-area {
+/* Video variant heading: large with bottom overflow effect */
+.hero-video h1 {
+  font-size: clamp(80px, 14vw, 200px);
+  line-height: 0.75;
+}
+
+/* Video variant CTA: wider to match original (330px) */
+.hero-video p a {
+  min-width: 330px;
+}
+
+/* Inline YouTube video container */
+.hero-video-embed {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  background: rgb(0 0 0);
+}
+
+.hero-video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Content overlay — always visible on top */
+.hero-video > div:last-of-type {
+  z-index: 3;
+}
+
+/* Play/pause toggle button: orange circle */
+.hero-video-toggle {
+  position: relative;
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 20px 0;
-}
-
-/* Play button: orange circle */
-.hero-play-button {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
+  margin: 16px auto 0;
   border-radius: 50%;
   background-color: var(--accent-color);
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: transform 0.2s, background-color 0.2s;
   flex-shrink: 0;
 }
 
-.hero-play-button:hover {
+.hero-video-toggle:hover {
   background-color: var(--accent-hover-color);
   transform: scale(1.05);
 }
 
-/* Play triangle icon (CSS-only) */
-.hero-play-icon {
+/* Play icon (triangle) */
+.hero-video-toggle-icon.play {
   display: block;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 12px 0 12px 22px;
+  border-width: 10px 0 10px 18px;
   border-color: transparent transparent transparent var(--white);
-  margin-left: 4px;
+  margin-left: 3px;
 }
 
-/* Desktop: side-by-side layout */
-@media (width >= 900px) {
-  .hero-campaign {
-    flex-direction: row;
-  }
-
-  .hero-video-area {
-    width: 50%;
-    padding: 0;
-  }
-
-  .hero-campaign > div:last-of-type {
-    width: 50%;
-  }
-
-  .hero-play-button {
-    width: 120px;
-    height: 120px;
-  }
-
-  .hero-play-icon {
-    border-width: 20px 0 20px 34px;
-    margin-left: 6px;
-  }
-}
-
-/* Video modal overlay */
-.hero-video-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgb(0 0 0 / 85%);
+/* Pause icon (two vertical bars) */
+.hero-video-toggle-icon.pause {
   display: flex;
-  align-items: center;
+  gap: 6px;
+  width: 20px;
+  height: 20px;
+}
+
+.hero-video-toggle-icon.pause::before,
+.hero-video-toggle-icon.pause::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 100%;
+  background-color: var(--white);
+}
+
+/* Desktop: bottom-aligned layout with positioned elements */
+@media (width >= 900px) {
+  .hero-video {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  .hero-video h1 {
+    margin-bottom: -140px;
+  }
+
+  /* Video embed: centered in the hero */
+  .hero-video-embed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 640px;
+  }
+
+  /* Content overlay: flex column for reordering */
+  .hero-video > div:last-of-type > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* CTA above heading (reverse visual order to match original) */
+  .hero-video > div:last-of-type > div > h1 {
+    order: 2;
+  }
+
+  .hero-video > div:last-of-type > div > p {
+    order: 1;
+  }
+
+  /* Toggle button: positioned top-right in the hero */
+  .hero-video-toggle {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+  }
+
+  .hero-video-toggle-icon.play {
+    border-width: 14px 0 14px 24px;
+    margin-left: 4px;
+  }
+
+  .hero-video-toggle-icon.pause {
+    gap: 8px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero-video-toggle-icon.pause::before,
+  .hero-video-toggle-icon.pause::after {
+    width: 8px;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   Variant: Hero Slider (.hero.slider / .hero-slider)
+   Full-bleed dark hero with crossfading background images,
+   rotating word animation, progress bar, and ghost CTA.
+   Matches "Ways to join" section at jobs.army.mod.uk/army-reserve/.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity -- slider variant overrides base hero rules */
+
+.hero-slider {
+  border-radius: 0;
+  min-height: 650px;
   justify-content: center;
+  padding: 80px 24px;
 }
 
-.hero-video-modal-inner {
-  position: relative;
-  width: 90%;
-  max-width: 960px;
-  aspect-ratio: 16 / 9;
-  background: rgb(0 0 0);
-  border-radius: 8px;
+/* --- Image layer --- */
+
+/* Remove ARMY watermark */
+.hero-slider > div:first-child::before {
+  content: none;
 }
 
-.hero-video-modal-close {
+/* Left-to-right gradient instead of bottom-to-top */
+.hero-slider > div:first-child::after {
+  background: linear-gradient(to right, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 40%) 50%, transparent 75%);
+}
+
+/* Stacked background images — only the active one is visible */
+.hero-slider-img {
   position: absolute;
-  top: -40px;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--white);
-  font-size: 32px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 4px 8px;
+  inset: 0;
+  opacity: 0;
 }
 
-.hero-video-wrapper {
-  position: relative;
+.hero-slider-img.active {
+  opacity: 1;
+}
+
+.hero-slider-img picture,
+.hero-slider-img img {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
+  object-fit: cover;
 }
 
-.hero-video-fallback {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  background: #c00;
-  padding: 10px 24px;
-  border-radius: 4px;
-  text-decoration: none;
+/* Image crossfade animations */
+.hero-slider-img.fade-in {
+  animation: hero-img-fade-in 1s linear forwards;
+}
+
+.hero-slider-img.fade-out {
+  animation: hero-img-fade-out 1s linear forwards;
+}
+
+@keyframes hero-img-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-img-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* --- Content layer --- */
+
+/* h3 keyline label: orange line + small uppercase text */
+.hero-slider h3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   font-size: 16px;
   font-weight: 700;
-  z-index: 1;
-  white-space: nowrap;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  text-shadow: none;
 }
 
-.hero-video-fallback:hover {
-  background: #e00;
+.hero-slider h3::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 1px;
+  flex-shrink: 0;
+  background-color: var(--accent-color);
 }
+
+/* Static title ("Be a reserve") — orange */
+.hero-slider-title {
+  font-size: clamp(60px, 14vw, 200px);
+  line-height: clamp(50px, 11vw, 150px);
+  color: var(--accent-color);
+  text-shadow: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Word slider container — clips the rotating words */
+.hero-slider-words {
+  position: relative;
+  overflow: hidden;
+  height: clamp(50px, 11vw, 160px);
+}
+
+/* Invisible sizer: determines container height from the longest word */
+.hero-slider-word-sizer {
+  visibility: hidden;
+  position: relative;
+  font-size: clamp(60px, 14vw, 200px);
+  line-height: clamp(50px, 11vw, 150px);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Rotating words — white, absolute-positioned */
+.hero-slider-word {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  font-size: clamp(60px, 14vw, 200px);
+  line-height: clamp(50px, 11vw, 150px);
+  color: var(--white);
+  text-shadow: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.hero-slider-word.active {
+  top: 0;
+}
+
+/* Word scroll animations */
+.hero-slider-word.scroll-in {
+  animation: hero-word-scroll-in 1s linear forwards;
+}
+
+.hero-slider-word.scroll-out {
+  animation: hero-word-scroll-out 1s linear forwards;
+}
+
+@keyframes hero-word-scroll-in {
+  from { top: -100%; }
+  to { top: 0; }
+}
+
+@keyframes hero-word-scroll-out {
+  from { top: 0; }
+  to { top: 100%; }
+}
+
+/* Orange underline below the words */
+.hero-slider-underline {
+  width: 100%;
+  max-width: 500px;
+  height: 3px;
+  background-color: var(--accent-color);
+  margin-top: 16px;
+}
+
+/* Progress bar */
+.hero-slider-progress {
+  width: 100%;
+  max-width: 500px;
+  height: 3px;
+  background-color: rgb(229 226 218);
+  margin-top: 24px;
+}
+
+.hero-slider-progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: var(--accent-color);
+}
+
+.hero-slider-progress-bar.filling {
+  animation: hero-slider-fill 5s linear infinite;
+}
+
+@keyframes hero-slider-fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* CTA: ghost button with white border (compound selector for specificity) */
+.hero.slider p {
+  margin-top: 32px;
+}
+
+.hero.slider p a {
+  border: 2px solid var(--white);
+  background-color: transparent;
+  color: var(--white);
+  min-width: 330px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.hero.slider p a:hover {
+  background-color: var(--white);
+  color: var(--text-color);
+  border-color: var(--white);
+}
+
+/* Container overrides */
+main > .section.hero-container.hero-slider-container {
+  background-color: var(--dark-color);
+}
+
+/* --- Responsive --- */
+
+@media (width >= 600px) {
+  .hero-slider {
+    min-height: 750px;
+    padding: 80px 60px;
+  }
+
+  .hero-slider h3 {
+    font-size: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-slider {
+    min-height: 850px;
+    padding: 80px;
+  }
+
+  .hero-slider h3 {
+    font-size: 22px;
+  }
+
+  .hero-slider > div:last-of-type {
+    max-width: 900px;
+    margin: 0;
+  }
+
+  .hero-slider-words {
+    height: 160px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-slider {
+    padding: 80px;
+  }
+}
+
+/* Reduced motion: disable all slider animations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider-img.fade-in,
+  .hero-slider-img.fade-out {
+    animation: none;
+  }
+
+  .hero-slider-word.scroll-in,
+  .hero-slider-word.scroll-out {
+    animation: none;
+  }
+
+  .hero-slider-progress-bar.filling {
+    animation: none;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

@@ -40,7 +40,7 @@
     },
     {
       "name": "section-landing-page",
-      "urls": ["https://jobs.army.mod.uk/army-reserve/"],
+      "urls": ["https://jobs.army.mod.uk/army-reserve/", "https://jobs.army.mod.uk/how-to-join/", "https://jobs.army.mod.uk/regular-army/"],
       "description": "Section landing page with video hero, quick nav, carousels, parallax cards, map CTA, social video carousel, image slider, quote banner, CTA cards, and CTA banner",
       "blocks": [
         {

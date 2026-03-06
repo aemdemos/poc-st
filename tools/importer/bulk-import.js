@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console */
+
 /**
  * Bulk Import Runner
  *
@@ -7,32 +9,36 @@
  * EDS-compatible HTML content files to /workspace/content/.
  *
  * Usage:
- *   node tools/importer/bulk-import.js                    # Import all URLs from page-templates.json
- *   node tools/importer/bulk-import.js --url URL          # Import a single URL
- *   node tools/importer/bulk-import.js --urls URL1 URL2   # Import multiple URLs
- *   node tools/importer/bulk-import.js --file urls.txt    # Import URLs from a file (one per line)
- *   node tools/importer/bulk-import.js --dry-run          # Preview what would be imported
- *   node tools/importer/bulk-import.js --concurrency 3    # Max parallel imports (default: 2)
+ *   node tools/importer/bulk-import.js
+ *   node tools/importer/bulk-import.js --url URL
+ *   node tools/importer/bulk-import.js --urls URL1 URL2
+ *   node tools/importer/bulk-import.js --file urls.txt
+ *   node tools/importer/bulk-import.js --dry-run
+ *   node tools/importer/bulk-import.js --concurrency 3
  *
  * Options:
  *   --url URL            Single URL to import
  *   --urls URL1 URL2     Multiple URLs to import
- *   --file FILE          File containing URLs (one per line)
+ *   --file FILE          File with URLs (one per line)
  *   --output DIR         Output directory (default: ./content)
- *   --dry-run            Show what would be imported without writing files
+ *   --dry-run            Preview without writing files
  *   --concurrency N      Max parallel fetches (default: 2)
  *   --source-domain URL  Source domain for URL normalization
  *   --verbose            Show detailed output
  */
 
-import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'fs';
+import {
+  writeFileSync,
+  mkdirSync,
+  readFileSync,
+} from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { importPage } from './import-engine.js';
 import { loadTemplates } from './utils/template-matcher.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const WORKSPACE = resolve(__dirname, '../..');
+const importerDir = dirname(fileURLToPath(import.meta.url));
+const WORKSPACE = resolve(importerDir, '../..');
 
 // ── Argument Parsing ──────────────────────────────────────────────────
 
@@ -140,24 +146,28 @@ function urlToFilePath(url, outputDir) {
 
 // ── Concurrent Task Runner ────────────────────────────────────────────
 
-async function runConcurrent(tasks, concurrency) {
+function runConcurrent(tasks, concurrency) {
   const results = [];
-  const executing = new Set();
+  let idx = 0;
 
-  for (const task of tasks) {
-    const promise = task().then((result) => {
-      executing.delete(promise);
-      return result;
+  const run = () => {
+    if (idx >= tasks.length) return Promise.resolve();
+    const current = idx;
+    idx += 1;
+    const p = tasks[current]().then((val) => {
+      results[current] = { status: 'fulfilled', value: val };
+    }).catch((err) => {
+      results[current] = { status: 'rejected', reason: err };
     });
-    executing.add(promise);
-    results.push(promise);
+    return p.then(() => run());
+  };
 
-    if (executing.size >= concurrency) {
-      await Promise.race(executing);
-    }
-  }
+  const workers = Array.from(
+    { length: Math.min(concurrency, tasks.length) },
+    () => run(),
+  );
 
-  return Promise.allSettled(results);
+  return Promise.all(workers).then(() => results);
 }
 
 // ── Main ──────────────────────────────────────────────────────────────
@@ -179,7 +189,7 @@ async function main() {
 
   const uniqueUrls = [...new Set(args.urls)];
 
-  console.log(`\n=== Bulk Import ===`);
+  console.log('\n=== Bulk Import ===');
   console.log(`URLs to import: ${uniqueUrls.length}`);
   console.log(`Output directory: ${args.output}`);
   console.log(`Concurrency: ${args.concurrency}`);
@@ -215,7 +225,9 @@ async function main() {
       const elapsed = Date.now() - startTime;
       console.log(`[OK] ${url} → ${filePath} (${elapsed}ms, template: ${result.template || 'none'})`);
 
-      return { url, filePath, template: result.template, success: true };
+      return {
+        url, filePath, template: result.template, success: true,
+      };
     } catch (err) {
       const elapsed = Date.now() - startTime;
       console.error(`[FAIL] ${url} (${elapsed}ms): ${err.message}`);
@@ -227,15 +239,22 @@ async function main() {
   const results = await runConcurrent(tasks, args.concurrency);
 
   // Summary
-  const succeeded = results.filter((r) => r.status === 'fulfilled' && r.value.success);
-  const failed = results.filter((r) => r.status === 'rejected' || (r.status === 'fulfilled' && !r.value.success));
+  const succeeded = results.filter(
+    (r) => r.status === 'fulfilled' && r.value.success,
+  );
+  const failed = results.filter(
+    (r) => r.status === 'rejected'
+      || (r.status === 'fulfilled' && !r.value.success),
+  );
 
-  console.log(`\n=== Import Summary ===`);
+  console.log('\n=== Import Summary ===');
   console.log(`Succeeded: ${succeeded.length}/${uniqueUrls.length}`);
   if (failed.length > 0) {
     console.log(`Failed: ${failed.length}`);
     failed.forEach((r) => {
-      const val = r.status === 'fulfilled' ? r.value : { url: 'unknown', error: r.reason?.message };
+      const val = r.status === 'fulfilled'
+        ? r.value
+        : { url: 'unknown', error: r.reason?.message };
       console.log(`  - ${val.url}: ${val.error}`);
     });
   }

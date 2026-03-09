@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-location",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-03-09T18:30:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swindon/",
+    "originPage": "Army Careers Centre location page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "location-details",
+    "imagePattern": "noimg",
+    "structure": "text details + embedded map"
+  },
+  "contentPattern": {
+    "structure": "heading + address + hours + phone + button + about text | map iframe",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "location detail pages",
+      "contact pages with embedded maps",
+      "office/branch finder pages"
+    ],
+    "notSuitableFor": [
+      "general two-column text layouts",
+      "image-heavy side-by-side content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/army-careers-centre-finder/army-careers-centre-swindon/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-09T18:30:00.000Z"
+  }
+}

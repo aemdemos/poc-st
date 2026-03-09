@@ -95,6 +95,35 @@
           "instances": ["section[class*='CtaBar_ctaBar']:has([class*='CtaBar_column']:only-child)"]
         }
       ]
+    },
+    {
+      "name": "careers-centre-page",
+      "urls": ["https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swindon/"],
+      "description": "Army careers centre location page with centre details, address, opening hours, contact information, and embedded map",
+      "blocks": [
+        {
+          "name": "columns-location",
+          "instances": ["div[class*='CentreDetails_centreDetailsContainer']"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Breadcrumb Banner",
+          "selector": "main > div[class*='Breadcrumbs_breadcrumbsContainer']",
+          "style": "textured-beige",
+          "blocks": [],
+          "defaultContent": ["h1[class*='Breadcrumbs']", "ul[class*='Breadcrumbs_breadcrumbs']", "button[class*='Breadcrumbs_subAction']"]
+        },
+        {
+          "id": "section-2",
+          "name": "Centre Details",
+          "selector": "div[class*='CentreDetails_centreDetailsContainer']",
+          "style": "dark",
+          "blocks": ["columns-location"],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

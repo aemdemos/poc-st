@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swindon/",
+  "path": "army-careers-centre-finder/army-careers-centre-swindon",
+  "timestamp": "2026-03-09T19:42:21.361Z",
+  "title": "ACC Swindon",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

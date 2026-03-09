@@ -314,6 +314,11 @@ main img {
   width: 100%;
 }
 
+/* hide metadata block (processed by EDS framework, should not display) */
+main .metadata {
+  display: none;
+}
+
 /* sections */
 main > .section {
   margin: var(--section-spacing) 0;
@@ -551,6 +556,63 @@ main .section.dark-green a.button:any-link {
   color: var(--text-color);
 }
 
+/* section metadata — textured-beige (breadcrumb banner, transparent over body grunge texture) */
+main .section.textured-beige {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove gap between breadcrumb bar and content below */
+main .section.textured-beige + .section {
+  margin-top: 0;
+}
+
+main .section.textured-beige > .default-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  padding: 44px 78px 24px;
+  border-bottom: 1px solid black;
+}
+
+main .section.textured-beige > .default-content-wrapper ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+main .section.textured-beige > .default-content-wrapper ul a {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+/* "< Back to search" text */
+main .section.textured-beige > .default-content-wrapper > p {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.64px;
+  margin: 0;
+  cursor: pointer;
+}
+
+@media (width >= 900px) {
+  main .section.textured-beige > .default-content-wrapper {
+    padding: 44px 78px 24px;
+  }
+}
+
 /* Beige map CTA: child rules (after all section heading rules for ascending specificity) */
 main .section.beige:has(h4) .default-content-wrapper {
   position: relative;
@@ -599,7 +661,7 @@ main .section.beige:has(h4) h4 {
   margin: 0;
 }
 
-main .section.beige:has(h4) p:has(picture) {
+main .section.beige:has(h4) .default-content-wrapper p:has(picture) {
   position: relative;
   z-index: 1;
 }

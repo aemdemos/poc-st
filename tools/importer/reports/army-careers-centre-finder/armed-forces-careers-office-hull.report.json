@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-hull/",
+  "path": "army-careers-centre-finder/armed-forces-careers-office-hull",
+  "timestamp": "2026-03-10T18:06:36.461Z",
+  "title": "ACC Hull",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

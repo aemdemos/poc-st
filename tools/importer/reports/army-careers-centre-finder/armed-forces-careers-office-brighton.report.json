@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-brighton/",
+  "path": "army-careers-centre-finder/armed-forces-careers-office-brighton",
+  "timestamp": "2026-03-10T18:01:06.506Z",
+  "title": "AFCO Brighton",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

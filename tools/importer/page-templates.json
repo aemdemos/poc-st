@@ -2,7 +2,9 @@
   "templates": [
     {
       "name": "army-homepage",
-      "urls": ["https://jobs.army.mod.uk"],
+      "urls": [
+        "https://jobs.army.mod.uk"
+      ],
       "description": "British Army jobs homepage with hero banners, two-column CTAs, feature card carousel, events, and promo sections",
       "blocks": [
         {
@@ -15,95 +17,203 @@
         },
         {
           "name": "columns",
-          "instances": [".Home_heroActions__S7X92"]
+          "instances": [
+            ".Home_heroActions__S7X92"
+          ]
         },
         {
           "name": "feature-cards",
-          "instances": [".CarouselCards_carouselCards__F5Ozh"]
+          "instances": [
+            ".CarouselCards_carouselCards__F5Ozh"
+          ]
         },
         {
           "name": "section-find-your-fit",
-          "instances": [".Home_featureOneBanner__nPTY7"],
+          "instances": [
+            ".Home_featureOneBanner__nPTY7"
+          ],
           "section": "default-content"
         },
         {
           "name": "section-be-the-best",
-          "instances": [".Home_recruitment__gxPG6"],
+          "instances": [
+            ".Home_recruitment__gxPG6"
+          ],
           "section": "default-content"
         },
         {
           "name": "section-explore-roles",
-          "instances": [".Home_featureTwoBanner__TGHfs"],
+          "instances": [
+            ".Home_featureTwoBanner__TGHfs"
+          ],
           "section": "default-content"
         }
       ]
     },
     {
       "name": "section-landing-page",
-      "urls": ["https://jobs.army.mod.uk/army-reserve/", "https://jobs.army.mod.uk/how-to-join/", "https://jobs.army.mod.uk/regular-army/"],
+      "urls": [
+        "https://jobs.army.mod.uk/army-reserve/",
+        "https://jobs.army.mod.uk/how-to-join/",
+        "https://jobs.army.mod.uk/regular-army/"
+      ],
       "description": "Section landing page with video hero, quick nav, carousels, parallax cards, map CTA, social video carousel, image slider, quote banner, CTA cards, and CTA banner",
       "blocks": [
         {
           "name": "hero-video",
-          "instances": ["div[class*='HeroVideoBanner_heroContainer']"]
+          "instances": [
+            "div[class*='HeroVideoBanner_heroContainer']"
+          ]
         },
         {
           "name": "quick-nav",
-          "instances": ["section[class*='PageLinks_pageLinks']"]
+          "instances": [
+            "section[class*='PageLinks_pageLinks']"
+          ]
         },
         {
           "name": "section-intro-text",
-          "instances": ["section[class*='FreeText_container']"],
+          "instances": [
+            "section[class*='FreeText_container']"
+          ],
           "section": "default-content"
         },
         {
           "name": "carousel",
-          "instances": ["section[class*='CenteredCarousel_centeredCarousel']"]
+          "instances": [
+            "section[class*='CenteredCarousel_centeredCarousel']"
+          ]
         },
         {
           "name": "section-video-content",
-          "instances": ["section[class*='ContentBlock_contentBlock']"],
+          "instances": [
+            "section[class*='ContentBlock_contentBlock']"
+          ],
           "section": "default-content"
         },
         {
           "name": "parallax-cards",
-          "instances": ["section[class*='VerticalParallaxCards_carouselContainer']"]
+          "instances": [
+            "section[class*='VerticalParallaxCards_carouselContainer']"
+          ]
         },
         {
           "name": "section-map-cta",
-          "instances": ["section[class*='ReserveCentreCTAMap_mapContainer']"],
+          "instances": [
+            "section[class*='ReserveCentreCTAMap_mapContainer']"
+          ],
           "section": "default-content"
         },
         {
           "name": "carousel-social",
-          "instances": ["section[class*='SocialCarousel_centeredCarousel']"]
+          "instances": [
+            "section[class*='SocialCarousel_centeredCarousel']"
+          ]
         },
         {
           "name": "hero-banner",
-          "instances": ["section[class*='ImageAndTextSlider_banner']"]
+          "instances": [
+            "section[class*='ImageAndTextSlider_banner']"
+          ]
         },
         {
           "name": "quote",
-          "instances": ["section[class*='QuoteBanner_quoteBanner']"]
+          "instances": [
+            "section[class*='QuoteBanner_quoteBanner']"
+          ]
         },
         {
           "name": "cards-cta",
-          "instances": ["section[class*='CtaBar_ctaBar']:has([class*='Keyline_text'] :is(h3:not(:empty)))"]
+          "instances": [
+            "section[class*='CtaBar_ctaBar']:has([class*='Keyline_text'] :is(h3:not(:empty)))"
+          ]
         },
         {
           "name": "cta-banner",
-          "instances": ["section[class*='CtaBar_ctaBar']:has([class*='CtaBar_column']:only-child)"]
+          "instances": [
+            "section[class*='CtaBar_ctaBar']:has([class*='CtaBar_column']:only-child)"
+          ]
         }
       ]
     },
     {
       "name": "careers-centre-page",
-      "urls": ["https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swindon/"],
+      "urls": [
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swindon/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-aberdeen/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-belfast/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-bloomsbury-wc1/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-bournemouth/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-brighton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-bristol/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-cambridge/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-carlisle/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-chatham/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-dundee/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-edinburgh/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-exeter/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-glasgow/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-hull/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-inverness/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-leeds/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-leicester/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-lincoln/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-liverpool/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-manchester/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-middlesbrough/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-newcastle-upon-tyne/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-norwich/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-nottingham/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-peterborough/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-plymouth/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-portsmouth/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-preston/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-reading/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-redruth/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-sheffield/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-shrewsbury/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-stoke-on-trent/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-wrexham/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-bangor/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-birmingham/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-bolton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-bradford/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-canterbury/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-cardiff/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-chelmsford/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-coleraine/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-coventry/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-crawley/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-derby/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-doncaster/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-enniskillen/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-hereford/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-milton-keynes/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-northampton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-oxford/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-portadown/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-reserve-centre-luton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-salisbury/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-southampton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-swansea/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-taunton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-victoria-sw1/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-wolverhampton/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-worcester/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-york/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-office-aldershot/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-office-chester/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-office-gloucester/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-office-ipswich/",
+        "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-office-stockport/"
+      ],
       "description": "Army careers centre location page with centre details, address, opening hours, contact information, and embedded map",
       "blocks": [
         {
           "name": "columns-location",
-          "instances": ["div[class*='CentreDetails_centreDetailsContainer']"]
+          "instances": [
+            "div[class*='CentreDetails_centreDetailsContainer']"
+          ]
         }
       ],
       "sections": [
@@ -113,14 +223,20 @@
           "selector": "main > div[class*='Breadcrumbs_breadcrumbsContainer']",
           "style": "textured-beige",
           "blocks": [],
-          "defaultContent": ["h1[class*='Breadcrumbs']", "ul[class*='Breadcrumbs_breadcrumbs']", "button[class*='Breadcrumbs_subAction']"]
+          "defaultContent": [
+            "h1[class*='Breadcrumbs']",
+            "ul[class*='Breadcrumbs_breadcrumbs']",
+            "button[class*='Breadcrumbs_subAction']"
+          ]
         },
         {
           "id": "section-2",
           "name": "Centre Details",
           "selector": "div[class*='CentreDetails_centreDetailsContainer']",
           "style": "dark",
-          "blocks": ["columns-location"],
+          "blocks": [
+            "columns-location"
+          ],
           "defaultContent": []
         }
       ]

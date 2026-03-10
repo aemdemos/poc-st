@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-bristol/",
+  "path": "army-careers-centre-finder/armed-forces-careers-office-bristol",
+  "timestamp": "2026-03-10T18:01:43.017Z",
+  "title": "AFCO Bristol",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

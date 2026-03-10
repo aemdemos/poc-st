@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-crawley/",
+  "path": "army-careers-centre-finder/army-careers-centre-crawley",
+  "timestamp": "2026-03-10T18:31:49.058Z",
+  "title": "Mobile ACC - Crawley Area",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

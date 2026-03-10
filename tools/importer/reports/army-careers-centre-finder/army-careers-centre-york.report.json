@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-york/",
+  "path": "army-careers-centre-finder/army-careers-centre-york",
+  "timestamp": "2026-03-10T18:42:49.186Z",
+  "title": "ACC York",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

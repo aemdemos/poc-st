@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-canterbury/",
+  "path": "army-careers-centre-finder/army-careers-centre-canterbury",
+  "timestamp": "2026-03-10T18:27:19.083Z",
+  "title": "ACC Canterbury",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-bolton/",
+  "path": "army-careers-centre-finder/army-careers-centre-bolton",
+  "timestamp": "2026-03-10T18:26:05.644Z",
+  "title": "ACC Bolton",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

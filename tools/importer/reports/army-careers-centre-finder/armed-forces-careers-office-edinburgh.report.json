@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-edinburgh/",
+  "path": "army-careers-centre-finder/armed-forces-careers-office-edinburgh",
+  "timestamp": "2026-03-10T18:04:46.162Z",
+  "title": "AFCO Edinburgh",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

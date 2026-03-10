@@ -26,6 +26,17 @@ export function loadTemplates() {
 }
 
 /**
+ * Get a template by name.
+ *
+ * @param {string} name - the template name
+ * @returns {Object|null} the matching template, or null
+ */
+export function getTemplateByName(name) {
+  const { templates } = loadTemplates();
+  return templates.find((t) => t.name === name) || null;
+}
+
+/**
  * Match a URL to a template.
  *
  * @param {string} url - the page URL to match

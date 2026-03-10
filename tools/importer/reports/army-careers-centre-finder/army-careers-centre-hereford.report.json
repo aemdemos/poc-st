@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-hereford/",
+  "path": "army-careers-centre-finder/army-careers-centre-hereford",
+  "timestamp": "2026-03-10T18:34:12.414Z",
+  "title": "Mobile ACC - Hereford Area",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

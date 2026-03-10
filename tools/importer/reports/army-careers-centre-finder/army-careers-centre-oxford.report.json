@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/army-careers-centre-oxford/",
+  "path": "army-careers-centre-finder/army-careers-centre-oxford",
+  "timestamp": "2026-03-10T18:35:59.802Z",
+  "title": "ACC Oxford",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

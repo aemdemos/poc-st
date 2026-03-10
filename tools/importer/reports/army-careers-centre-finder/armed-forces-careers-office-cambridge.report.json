@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://jobs.army.mod.uk/army-careers-centre-finder/armed-forces-careers-office-cambridge/",
+  "path": "army-careers-centre-finder/armed-forces-careers-office-cambridge",
+  "timestamp": "2026-03-10T18:02:19.666Z",
+  "title": "AFCO Cambridge",
+  "template": "careers-centre-page",
+  "blocks": [
+    "columns-location"
+  ]
+}

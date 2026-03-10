@@ -8,10 +8,10 @@
   margin-bottom: 30px;
 }
 
-/* Row layout — mobile-first (stacked) */
+/* Row layout — mobile-first (stacked, map on top via reverse) */
 .columns-location > div {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 24px;
 }
 
@@ -106,9 +106,19 @@
 
 /* --- Group spacing — :has() selectors in ascending specificity order --- */
 
-/* Group spacing: 30px gap before "Opening times" label — specificity (0,2,2) */
+/* Group spacing + separator before "Opening times" / "Call:" labels — specificity (0,2,2) */
 .columns-location p:has(> strong:only-child) {
   margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #ccc;
+}
+
+/* Desktop: remove separator line */
+@media (width >= 900px) {
+  .columns-location p:has(> strong:only-child) {
+    padding-top: 0;
+    border-top: none;
+  }
 }
 
 /* Spacing after "Call:" line before button — specificity (0,2,2) */

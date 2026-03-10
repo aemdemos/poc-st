@@ -574,7 +574,7 @@ main .section.textured-beige > .default-content-wrapper {
   box-sizing: border-box;
   width: 100%;
   max-width: none;
-  padding: 44px 78px 24px;
+  padding: 20px 30px;
   border-bottom: 1px solid black;
 }
 
@@ -588,7 +588,7 @@ main .section.textured-beige > .default-content-wrapper ul {
 
 main .section.textured-beige > .default-content-wrapper ul a {
   font-family: var(--heading-font-family);
-  font-size: 32px;
+  font-size: var(--body-font-size-m);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.64px;
@@ -599,7 +599,7 @@ main .section.textured-beige > .default-content-wrapper ul a {
 /* "< Back to search" text */
 main .section.textured-beige > .default-content-wrapper > p {
   font-family: var(--heading-font-family);
-  font-size: 32px;
+  font-size: var(--body-font-size-m);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.64px;
@@ -610,6 +610,14 @@ main .section.textured-beige > .default-content-wrapper > p {
 @media (width >= 900px) {
   main .section.textured-beige > .default-content-wrapper {
     padding: 44px 78px 24px;
+  }
+
+  main .section.textured-beige > .default-content-wrapper ul a {
+    font-size: 32px;
+  }
+
+  main .section.textured-beige > .default-content-wrapper > p {
+    font-size: 32px;
   }
 }
 

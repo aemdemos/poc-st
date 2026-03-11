@@ -131,19 +131,14 @@ function parseBlocks(document, blockMatches) {
 
   blockMatches.forEach(({ name, element, section }) => {
     const parser = getParser(name);
-    if (!parser) {
-      console.warn(`No parser found for block: ${name}`);
-      return;
-    }
 
     try {
       const isDefaultContent = section === 'default-content' || name.startsWith('section-');
       if (isDefaultContent) {
         // Use a specific parser if registered (e.g. section-breadcrumb),
         // otherwise fall back to the generic default-content parser.
-        const specificParser = getParser(name);
         const defaultParser = getParser('default-content');
-        const chosen = specificParser !== defaultParser ? specificParser : defaultParser;
+        const chosen = parser !== defaultParser ? parser : defaultParser;
         chosen(element, { document });
       } else {
         // Run the block parser

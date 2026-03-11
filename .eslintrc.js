@@ -19,4 +19,18 @@ module.exports = {
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
   },
+  overrides: [
+    {
+      // Node.js import tools — allow devDependencies and Node globals
+      files: ['tools/importer/**/*.js'],
+      env: {
+        browser: false,
+        node: true,
+        es2020: true,
+      },
+      rules: {
+        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      },
+    },
+  ],
 };

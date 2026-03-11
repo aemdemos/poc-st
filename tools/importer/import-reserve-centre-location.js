@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 // PARSER IMPORTS
-import reserveCentreParser from './parsers/columns-reserve.js';
+import reserveCentreParser from './parsers/accordion-reserve.js';
 
 // TRANSFORMER IMPORTS
 import armyCleanupTransformer from './transformers/army-cleanup.js';

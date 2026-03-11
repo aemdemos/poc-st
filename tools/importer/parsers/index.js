@@ -17,7 +17,7 @@ import heroVideoParser from './hero-video.js';
 import heroBannerParser from './hero-banner.js';
 import columnsParser from './columns.js';
 import columnsLocationParser from './columns-location.js';
-import reserveCentreParser from './columns-reserve.js';
+import reserveCentreParser from './accordion-reserve.js';
 import cardsParser from './cards.js';
 import cardsCTAParser from './cards-cta.js';
 import carouselParser from './carousel.js';

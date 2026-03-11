@@ -50,12 +50,10 @@ const SECTION_STYLE_MAP = [
  * @returns {string|null}
  */
 function detectSectionStyle(element) {
-  const classes = (element.className || '') + ' '
-    + (element.parentElement ? element.parentElement.className || '' : '');
+  const classes = `${element.className || ''} ${element.parentElement ? element.parentElement.className || '' : ''}`;
 
-  for (const { match, style } of SECTION_STYLE_MAP) {
-    if (match.test(classes)) return style;
-  }
+  const matched = SECTION_STYLE_MAP.find(({ match }) => match.test(classes));
+  if (matched) return matched.style;
 
   // Check for inline background-color styles
   const bgStyle = element.getAttribute('style') || '';
@@ -149,6 +147,7 @@ function parseBlocks(document, blockMatches) {
         }
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(`Parser error for block "${name}":`, err.message);
     }
   });
@@ -258,6 +257,7 @@ export async function importPage(url, options = {}) {
     : matchTemplate(url);
 
   if (!template) {
+    // eslint-disable-next-line no-console
     console.warn(`No template matched for URL: ${url}`);
     return {
       html: document.body ? document.body.innerHTML : '',

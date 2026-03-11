@@ -1,0 +1,279 @@
+/* Columns-Reserve block — Reserve Centre detail pages */
+
+/* Container */
+.columns-reserve {
+  padding: 0;
+  background-color: var(--background-color);
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+/* Row layout — mobile-first (stacked) */
+.columns-reserve > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Desktop: two-column sidebar + main */
+@media (width >= 900px) {
+  .columns-reserve > div {
+    display: grid;
+    grid-template-columns: 452px 1fr;
+    gap: 0;
+  }
+}
+
+/* --- Left column: sidebar --- */
+
+.columns-reserve-sidebar {
+  padding: 32px 24px;
+  background-color: rgb(255 255 255 / 50%);
+}
+
+@media (width >= 900px) {
+  .columns-reserve-sidebar {
+    padding: 47px 38px;
+  }
+}
+
+/* --- Right column: unit cards --- */
+
+.columns-reserve-units {
+  padding: 32px 24px;
+}
+
+@media (width >= 900px) {
+  .columns-reserve-units {
+    padding: 72px 32px 72px 42px;
+  }
+}
+
+/* --- Typography --- */
+
+.columns-reserve h1,
+.columns-reserve h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.columns-reserve-sidebar h1 {
+  font-size: 40px;
+}
+
+.columns-reserve-sidebar p {
+  font-size: var(--body-font-size-xs);
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+
+.columns-reserve-sidebar strong {
+  font-weight: 700;
+}
+
+/* "Get directions" link */
+.columns-reserve a[href*="google.co.uk/maps"],
+.columns-reserve a[href*="google.com/maps/dir"],
+.columns-reserve-directions {
+  display: inline-block;
+  margin: 20px 0;
+  padding: var(--button-padding);
+  border: 2px solid var(--text-color);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.columns-reserve a[href*="google.co.uk/maps"]:hover,
+.columns-reserve a[href*="google.com/maps/dir"]:hover,
+.columns-reserve-directions:hover {
+  background-color: var(--text-color);
+  color: var(--white);
+}
+
+/* Map image */
+.columns-reserve-map img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 20%);
+}
+
+/* --- Right column: unit cards --- */
+
+.columns-reserve-units > h1,
+.columns-reserve-units > h2 {
+  font-size: 36px;
+  margin-bottom: 24px;
+}
+
+/* Unit card container */
+.columns-reserve-unit-card {
+  background-color: var(--white, #fff);
+  color: var(--dark-color);
+  border: 1px solid var(--olive-accent);
+  border-radius: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+/* Unit card header (clickable) */
+.columns-reserve-unit-header {
+  display: grid;
+  grid-template-columns: 70px auto 20px;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  cursor: pointer;
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: none;
+  text-align: left;
+  line-height: 1.1;
+  margin: 0;
+  user-select: none;
+  background-color: var(--white, #fff);
+  border: none;
+  color: var(--dark-color);
+}
+
+.columns-reserve-unit-header img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Chevron indicator */
+.columns-reserve-unit-header::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg width='20' height='12' viewBox='0 0 20 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0086 11.295C10.4507 11.8528 9.5448 11.8528 8.98695 11.295L0.418386 2.72643C-0.139462 2.16858 -0.139462 1.26264 0.418386 0.704788C0.976236 0.146939 1.88218 0.146939 2.44003 0.704788L10 8.26476L17.56 0.70925C18.1178 0.151402 19.0238 0.151402 19.5816 0.70925C20.1395 1.2671 20.1395 2.17305 19.5816 2.7309L11.0131 11.2995L11.0086 11.295Z' fill='black'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+.columns-reserve-unit-open .columns-reserve-unit-header::after {
+  transform: rotate(180deg);
+}
+
+/* Unit card content (hidden by default) */
+.columns-reserve-unit-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.columns-reserve-unit-open .columns-reserve-unit-content {
+  max-height: max-content;
+  padding: 0 20px 20px;
+}
+
+/* Content labels */
+.columns-reserve-unit-content strong {
+  font-weight: 700;
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.columns-reserve-unit-content p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.3;
+  margin: 10px 0 0;
+}
+
+/* Reset ALL auto-decorated .button links to plain link styling.
+   EDS decorateButtons wraps standalone <a> in <p> as .button,
+   but contact emails and other inline links should stay as text links. */
+.columns-reserve-unit-content a.button {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--dark-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  text-decoration: underline;
+  text-align: left;
+  line-height: 1.3;
+  width: auto;
+  max-width: none;
+  float: none;
+  word-break: break-all;
+}
+
+/* Available roles list */
+.columns-reserve-unit-content ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.columns-reserve-unit-content li {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.3;
+}
+
+.columns-reserve-unit-content li a {
+  color: var(--dark-color);
+  text-decoration: underline;
+}
+
+/* CTA "Get in touch" button — only the LAST .button-container in each card */
+.columns-reserve-unit-content > p.button-container:last-child {
+  overflow: hidden;
+}
+
+.columns-reserve-unit-content > p.button-container:last-child a.button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 20px 100px;
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  border-radius: 0;
+  border: 2px solid var(--accent-color);
+  float: right;
+  cursor: pointer;
+  transition: var(--button-transition);
+  word-break: normal;
+}
+
+.columns-reserve-unit-content > p.button-container:last-child a.button:hover {
+  background-color: var(--accent-hover-color);
+  border-color: var(--accent-hover-color);
+}
+
+/* Section container: full-bleed layout override */
+main > .section.columns-reserve-container > .columns-reserve-wrapper {
+  max-width: none;
+  padding: 0;
+}

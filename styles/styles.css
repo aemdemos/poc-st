@@ -613,11 +613,13 @@ main .section.textured-beige > .default-content-wrapper > p {
   }
 
   main .section.textured-beige > .default-content-wrapper ul a {
-    font-size: 32px;
+    font-size: 24px;
+    letter-spacing: 0.48px;
   }
 
   main .section.textured-beige > .default-content-wrapper > p {
-    font-size: 32px;
+    font-size: 24px;
+    letter-spacing: 0.48px;
   }
 }
 

@@ -17,6 +17,7 @@ import heroVideoParser from './hero-video.js';
 import heroBannerParser from './hero-banner.js';
 import columnsParser from './columns.js';
 import columnsLocationParser from './columns-location.js';
+import columnsReserveParser from './columns-reserve.js';
 import cardsParser from './cards.js';
 import cardsCTAParser from './cards-cta.js';
 import carouselParser from './carousel.js';
@@ -44,6 +45,7 @@ const parsers = {
   // Layout blocks
   columns: columnsParser,
   'columns-location': columnsLocationParser,
+  'columns-reserve': columnsReserveParser,
 
   // Card blocks
   cards: cardsParser,

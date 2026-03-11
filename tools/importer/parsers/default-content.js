@@ -92,6 +92,8 @@ export default function parse(element, { document }) {
   if (paragraphs.length === 0) {
     const links = element.querySelectorAll('a[href]');
     links.forEach((link) => {
+      // Skip links inside lists (already handled by list extraction)
+      if (link.closest('ul') || link.closest('ol')) return;
       const p = document.createElement('p');
       const a = document.createElement('a');
       a.href = link.href || link.getAttribute('href');
@@ -124,6 +126,9 @@ export default function parse(element, { document }) {
   });
 
   if (fragment.childNodes.length > 0) {
-    element.replaceWith(fragment);
+    // Modify element in-place so the import engine's assembleContent()
+    // can still reference it (replaceWith detaches the element).
+    while (element.firstChild) element.removeChild(element.firstChild);
+    while (fragment.firstChild) element.appendChild(fragment.firstChild);
   }
 }

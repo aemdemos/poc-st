@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 // PARSER IMPORTS
-import columnsReserveParser from './parsers/columns-reserve.js';
+import reserveCentreParser from './parsers/columns-reserve.js';
 
 // TRANSFORMER IMPORTS
 import armyCleanupTransformer from './transformers/army-cleanup.js';
@@ -10,7 +10,7 @@ import armySectionsTransformer from './transformers/army-sections.js';
 
 // PARSER REGISTRY
 const parsers = {
-  'columns-reserve': columnsReserveParser,
+  accordion: reserveCentreParser,
 };
 
 // TRANSFORMER REGISTRY
@@ -22,13 +22,13 @@ const transformers = [
 // PAGE TEMPLATE CONFIGURATION
 const PAGE_TEMPLATE = {
   name: 'reserve-centre-location',
-  description: '2-column reserve centre detail page with address info and map',
+  description: 'Reserve centre detail page with sidebar default content and accordion unit cards',
   urls: [
     'https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/south-east/abingdon-cholswell-road/',
   ],
   blocks: [
     {
-      name: 'columns-reserve',
+      name: 'accordion',
       instances: ['div[class*=\'ReserveUnitCentre_gridContainer\']'],
     },
   ],
@@ -45,8 +45,8 @@ const PAGE_TEMPLATE = {
       id: 'section-2',
       name: 'Reserve Centre Details',
       selector: 'div[class*=\'ReserveUnitCentre_gridContainer\']',
-      style: 'dark',
-      blocks: ['columns-reserve'],
+      style: null,
+      blocks: ['accordion'],
       defaultContent: [],
     },
   ],

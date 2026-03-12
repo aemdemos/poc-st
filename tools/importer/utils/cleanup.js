@@ -117,6 +117,39 @@ export function normalizeImages(document) {
 }
 
 /**
+ * Decode Cloudflare email-protected links.
+ * Cloudflare encodes emails as /cdn-cgi/l/email-protection#HEX where the
+ * first byte is the XOR key and subsequent bytes are the encoded email.
+ *
+ * @param {Document} document
+ */
+export function decodeCloudflareEmails(document) {
+  document.querySelectorAll('a[href*="/cdn-cgi/l/email-protection"]').forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    const hashIdx = href.indexOf('#');
+    if (hashIdx === -1) return;
+
+    const hex = href.slice(hashIdx + 1);
+    if (hex.length < 4) return;
+
+    const key = parseInt(hex.substring(0, 2), 16);
+    let email = '';
+    for (let i = 2; i < hex.length; i += 2) {
+      email += String.fromCharCode(parseInt(hex.substring(i, i + 2), 16) ^ key);
+    }
+
+    if (email.includes('@')) {
+      link.setAttribute('href', `mailto:${email}`);
+      // Replace placeholder text like "[email protected]"
+      const text = link.textContent || '';
+      if (text.includes('[email') || text.includes('email\u00a0protected')) {
+        link.textContent = email;
+      }
+    }
+  });
+}
+
+/**
  * Remove empty elements that add no value.
  *
  * @param {Document} document
@@ -143,6 +176,7 @@ export function removeEmptyElements(document) {
 export function runAllCleanup(document, options = {}) {
   const domain = options.sourceDomain || SOURCE_DOMAIN;
   removeUnwantedElements(document);
+  decodeCloudflareEmails(document);
   normalizeUrls(document, domain);
   normalizeImages(document);
   removeEmptyElements(document);

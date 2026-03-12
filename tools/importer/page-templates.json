@@ -240,6 +240,51 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "reserve-centre-location",
+      "urls": [
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/south-east/abingdon-cholswell-road/"
+      ],
+      "description": "Reserve centre detail page with sidebar default content and accordion unit cards",
+      "blocks": [
+        {
+          "name": "section-breadcrumb",
+          "instances": [
+            "div[class*='Breadcrumbs_breadcrumbsContainer']"
+          ],
+          "section": "default-content"
+        },
+        {
+          "name": "accordion-reserve",
+          "instances": [
+            "div[class*='ReserveUnitCentre_gridContainer']"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Breadcrumb Banner",
+          "selector": "main > div[class*='Breadcrumbs_breadcrumbsContainer']",
+          "style": "textured-beige",
+          "blocks": [],
+          "defaultContent": [
+            "a[class*='Breadcrumbs_homeLink']",
+            "ul[class*='Breadcrumbs_breadcrumbs']"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Reserve Centre Details",
+          "selector": "div[class*='ReserveUnitCentre_gridContainer']",
+          "style": null,
+          "blocks": [
+            "accordion-reserve"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

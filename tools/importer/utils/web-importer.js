@@ -32,10 +32,11 @@ function createBlock(document, configOrCells) {
   }
 
   // Convert "Hero (video)" → class="hero video", "Cards (cta)" → class="cards cta"
+  // Preserve hyphens so "Accordion-reserve" → class="accordion-reserve"
   const className = name
     .toLowerCase()
     .replace(/\s*\(([^)]+)\)\s*/g, ' $1')
-    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/[^a-z0-9-]+/g, ' ')
     .trim()
     .replace(/\s+/g, ' ');
 

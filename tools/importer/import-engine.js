@@ -31,6 +31,7 @@ globalThis.WebImporter = WebImporter;
  * translate them to section-metadata style values.
  */
 const SECTION_STYLE_MAP = [
+  { match: /breadcrumb/i, style: 'textured-beige' },
   { match: /campaign/i, style: 'campaign' },
   { match: /beige|sand|cream/i, style: 'beige' },
   { match: /olive|khaki/i, style: 'olive' },
@@ -49,12 +50,10 @@ const SECTION_STYLE_MAP = [
  * @returns {string|null}
  */
 function detectSectionStyle(element) {
-  const classes = (element.className || '') + ' '
-    + (element.parentElement ? element.parentElement.className || '' : '');
+  const classes = `${element.className || ''} ${element.parentElement ? element.parentElement.className || '' : ''}`;
 
-  for (const { match, style } of SECTION_STYLE_MAP) {
-    if (match.test(classes)) return style;
-  }
+  const matched = SECTION_STYLE_MAP.find(({ match }) => match.test(classes));
+  if (matched) return matched.style;
 
   // Check for inline background-color styles
   const bgStyle = element.getAttribute('style') || '';
@@ -130,17 +129,15 @@ function parseBlocks(document, blockMatches) {
 
   blockMatches.forEach(({ name, element, section }) => {
     const parser = getParser(name);
-    if (!parser) {
-      console.warn(`No parser found for block: ${name}`);
-      return;
-    }
 
     try {
       const isDefaultContent = section === 'default-content' || name.startsWith('section-');
       if (isDefaultContent) {
-        // For default content, use the default-content parser
+        // Use a specific parser if registered (e.g. section-breadcrumb),
+        // otherwise fall back to the generic default-content parser.
         const defaultParser = getParser('default-content');
-        defaultParser(element, { document });
+        const chosen = parser !== defaultParser ? parser : defaultParser;
+        chosen(element, { document });
       } else {
         // Run the block parser
         const result = parser(element, { document });
@@ -150,6 +147,7 @@ function parseBlocks(document, blockMatches) {
         }
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(`Parser error for block "${name}":`, err.message);
     }
   });
@@ -199,21 +197,14 @@ function assembleContent(document, blockMatches, pageMetadata) {
   sections.forEach(({ element, style }) => {
     const sectionDiv = document.createElement('div');
 
-    // The element has already been transformed by the parser.
-    // Move it into the section wrapper.
-    if (element.parentNode) {
-      // Collect sibling content that belongs to this section
-      // (the parser may have created a fragment with multiple elements)
-      const parent = element.parentNode;
-      const siblings = Array.from(parent.childNodes);
-      siblings.forEach((node) => {
-        if (node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim())) {
-          sectionDiv.appendChild(node.cloneNode(true));
-        }
-      });
-    } else {
-      sectionDiv.appendChild(element.cloneNode(true));
-    }
+    // The element has already been transformed by the parser in-place.
+    // Clone only the matched element's children into the section
+    // (not the parent's siblings, which may belong to other sections).
+    Array.from(element.childNodes).forEach((node) => {
+      if (node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim())) {
+        sectionDiv.appendChild(node.cloneNode(true));
+      }
+    });
 
     // Add section-metadata if there's a style
     if (style) {
@@ -266,6 +257,7 @@ export async function importPage(url, options = {}) {
     : matchTemplate(url);
 
   if (!template) {
+    // eslint-disable-next-line no-console
     console.warn(`No template matched for URL: ${url}`);
     return {
       html: document.body ? document.body.innerHTML : '',

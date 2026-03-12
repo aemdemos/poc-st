@@ -17,6 +17,7 @@ import heroVideoParser from './hero-video.js';
 import heroBannerParser from './hero-banner.js';
 import columnsParser from './columns.js';
 import columnsLocationParser from './columns-location.js';
+import reserveCentreParser from './accordion-reserve.js';
 import cardsParser from './cards.js';
 import cardsCTAParser from './cards-cta.js';
 import carouselParser from './carousel.js';
@@ -27,6 +28,7 @@ import quoteParser from './quote.js';
 import ctaBannerParser from './cta-banner.js';
 import promoBannerParser from './promo-banner.js';
 import tabsParser from './tabs.js';
+import breadcrumbParser from './breadcrumb.js';
 import defaultContentParser from './default-content.js';
 
 /**
@@ -44,6 +46,9 @@ const parsers = {
   // Layout blocks
   columns: columnsParser,
   'columns-location': columnsLocationParser,
+
+  // Accordion-reserve (reserve centre unit cards)
+  'accordion-reserve': reserveCentreParser,
 
   // Card blocks
   cards: cardsParser,
@@ -63,6 +68,9 @@ const parsers = {
   'cta-banner': ctaBannerParser,
   'promo-banner': promoBannerParser,
   tabs: tabsParser,
+
+  // Breadcrumb (linked items only, no current-page text)
+  'section-breadcrumb': breadcrumbParser,
 
   // Default content (no block wrapper)
   'default-content': defaultContentParser,

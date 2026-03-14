@@ -134,7 +134,30 @@ export default {
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 
-    // 6. Generate sanitized path
+    // 6. Final cleanup — remove stray quote text nodes
+    //    Stray characters (`"`, `!`, `×`) survive as bare text nodes (not in <p>)
+    //    and get wrapped into <p>X</p> during markdown conversion. Walk all text
+    //    nodes to catch them regardless of parent element type.
+    {
+      const strayChars = new Set(['"', '!', '×']);
+      const walker = document.createTreeWalker(main, 4 /* NodeFilter.SHOW_TEXT */);
+      const nodesToRemove = [];
+      while (walker.nextNode()) {
+        const text = walker.currentNode.textContent.trim();
+        if (strayChars.has(text)) {
+          nodesToRemove.push(walker.currentNode);
+        }
+      }
+      nodesToRemove.forEach((node) => {
+        const parent = node.parentNode;
+        node.remove();
+        if (parent && parent !== main && !parent.textContent.trim()) {
+          parent.remove();
+        }
+      });
+    }
+
+    // 7. Generate sanitized path
     const path = WebImporter.FileUtils.sanitizePath(
       new URL(params.originalURL).pathname.replace(/\/$/, '').replace(/\.html$/, ''),
     );

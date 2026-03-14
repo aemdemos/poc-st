@@ -244,7 +244,11 @@
     {
       "name": "reserve-centre-location",
       "urls": [
-        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/south-east/abingdon-cholswell-road/"
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/south-east/abingdon-cholswell-road/",
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/east-anglia/norwich-325-aylsham-road/",
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/midlands/grantham-belvoir-avenue/",
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/south-west/plymouth-brest-road/",
+        "https://jobs.army.mod.uk/army-reserve/find-a-reserve-centre/north-west/blackburn-moss-street/"
       ],
       "description": "Reserve centre detail page with sidebar default content and accordion unit cards",
       "blocks": [

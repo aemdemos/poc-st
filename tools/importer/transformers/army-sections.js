@@ -45,7 +45,6 @@ export default function transform(hookName, element, payload) {
   // Process sections in reverse order to avoid offset issues when inserting elements
   for (let i = sections.length - 1; i >= 0; i--) {
     const section = sections[i];
-    if (!section.style) continue;
 
     // Find the section container in the DOM
     const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
@@ -57,14 +56,16 @@ export default function transform(hookName, element, payload) {
 
     if (!sectionEl) continue;
 
-    // Create section-metadata table after the section content
-    const sectionMetadata = createSectionMetadataTable(document, section.style);
+    // Create section-metadata table after the section content (only when style is set)
+    if (section.style) {
+      const sectionMetadata = createSectionMetadataTable(document, section.style);
 
-    // Insert section-metadata after the section element
-    if (sectionEl.nextSibling) {
-      sectionEl.parentNode.insertBefore(sectionMetadata, sectionEl.nextSibling);
-    } else {
-      sectionEl.parentNode.appendChild(sectionMetadata);
+      // Insert section-metadata after the section element
+      if (sectionEl.nextSibling) {
+        sectionEl.parentNode.insertBefore(sectionMetadata, sectionEl.nextSibling);
+      } else {
+        sectionEl.parentNode.appendChild(sectionMetadata);
+      }
     }
 
     // Add section break (hr) before the section if it's not the first section

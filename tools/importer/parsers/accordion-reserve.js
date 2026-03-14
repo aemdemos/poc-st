@@ -295,7 +295,15 @@ export default function parse(element, { document }) {
   }
 
   // Build Section Metadata table for columns-reserve style
-  const sectionMetadata = createSectionMetadataDiv(document, 'columns-reserve');
+  let sectionMetadata;
+  try {
+    sectionMetadata = WebImporter.Blocks.createBlock(document, {
+      name: 'Section Metadata',
+      cells: [['style', 'columns-reserve']],
+    });
+  } catch (e) {
+    sectionMetadata = createSectionMetadataDiv(document, 'columns-reserve');
+  }
 
   // Modify the element in-place so the import engine's assembleContent()
   // can still reference it (replaceWith detaches the element from the DOM,

@@ -67,6 +67,12 @@ export default function transform(hookName, element, payload) {
 
       // Slick cloned slides (duplicates)
       '.slick-cloned',
+
+      // Overseas visitor geo-notification banner
+      '[class*="GeoNotification"]',
+      '[class*="geoNotification"]',
+      '[class*="InternationalBanner"]',
+      '[class*="internationalBanner"]',
     ];
 
     selectorsToRemove.forEach((selector) => {
@@ -114,6 +120,52 @@ export default function transform(hookName, element, payload) {
     // Remove iframes after parsers have extracted needed data (e.g., Google Maps URLs)
     element.querySelectorAll('iframe').forEach((el) => {
       el.remove();
+    });
+
+    // Remove overseas visitor banner content by text pattern
+    // The geo-banner produces: <p>!</p> <h2>It looks like you're visiting...</h2> <p>guidance text</p> <p>×</p>
+    // Class-based removal in beforeTransform may not catch it if classes vary.
+    element.querySelectorAll('h2').forEach((h2) => {
+      const text = h2.textContent.trim().toLowerCase();
+      if (text.includes('visiting our site from overseas') || text.includes('visiting from overseas')) {
+        // Remove the guidance paragraph that follows the heading
+        let next = h2.nextElementSibling;
+        while (next && next.tagName === 'P') {
+          const toRemove = next;
+          next = next.nextElementSibling;
+          toRemove.remove();
+        }
+        h2.remove();
+      }
+    });
+
+    // Remove stray single-character paragraphs (artifacts from cookie consent / geo-banner dismiss)
+    element.querySelectorAll('p').forEach((p) => {
+      const text = p.textContent.trim();
+      if (text === '"' || text === '×' || text === '!') {
+        p.remove();
+      }
+    });
+
+    // Remove tracking pixel images (Twitter, DoubleClick, analytics, etc.)
+    element.querySelectorAll('img').forEach((img) => {
+      const src = img.getAttribute('src') || '';
+      if (
+        src.includes('t.co/i/adsct')
+        || src.includes('analytics.twitter.com')
+        || src.includes('doubleclick.net')
+        || src.includes('facebook.com/tr')
+        || src.includes('google-analytics.com')
+        || src.includes('sc-static.net')
+        || src.includes('tr.snapchat.com')
+      ) {
+        const parent = img.parentNode;
+        img.remove();
+        // Remove parent <p> if it's now empty (only whitespace)
+        if (parent && parent.tagName === 'P' && !parent.textContent.trim()) {
+          parent.remove();
+        }
+      }
     });
   }
 }
